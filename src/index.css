@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #080808;
+    color: #f3f4f6;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+/* Sparkle Orange & Candlelight Accents */
+.text-sparkle-orange {
+  color: #ff6b00;
+  text-shadow: 0 0 16px rgba(255, 107, 0, 0.45);
+}
+
+.text-candle-gold {
+  color: #f59e0b;
+  text-shadow: 0 0 14px rgba(245, 158, 11, 0.5);
+}
+
+.bg-sparkle-orange {
+  background: linear-gradient(135deg, #ff7a1a 0%, #ff5500 50%, #dc2626 100%);
+}
+
+.bg-jazz-fire {
+  background: linear-gradient(135deg, #ef4444 0%, #ff6b00 50%, #f59e0b 100%);
+}
+
+.border-sparkle-orange {
+  border-color: rgba(255, 107, 0, 0.35);
+}
+
+.glow-orange {
+  box-shadow: 0 0 25px -4px rgba(255, 107, 0, 0.35);
+}
+
+.glow-candle {
+  box-shadow: 0 0 30px 2px rgba(245, 158, 11, 0.35), 0 0 15px rgba(239, 68, 68, 0.25);
+}
+
+.glow-orange-sm {
+  box-shadow: 0 0 12px -2px rgba(255, 107, 0, 0.25);
+}
+
+/* Jazzy Geometric African Pattern & Miriam Makeba Wallpaper */
+.bg-makeba-pattern {
+  background-image: url('/assets/aistudio/WhatsApp_Image_2026-10-27_at_2.43.11_PM_c2fb6fd2.jpg');
+  background-repeat: repeat;
+  background-size: 320px auto;
+}
+
+.bg-jazz-pattern {
+  background-image: radial-gradient(rgba(245, 158, 11, 0.12) 1.5px, transparent 1.5px),
+                    radial-gradient(rgba(239, 68, 68, 0.08) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.bg-jazz-chevron {
+  background-color: transparent;
+  background-image: repeating-linear-gradient(45deg, rgba(255, 107, 0, 0.04) 0, rgba(255, 107, 0, 0.04) 10px, transparent 0, transparent 20px),
+                    repeating-linear-gradient(-45deg, rgba(239, 68, 68, 0.04) 0, rgba(239, 68, 68, 0.04) 10px, transparent 0, transparent 20px);
+}
+
+/* Candle Flicker & Stardust Animations */
+@keyframes candleFlicker {
+  0%, 100% {
+    opacity: 0.92;
+    transform: scale(1) translateY(0);
+    filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.8));
+  }
+  25% {
+    opacity: 0.8;
+    transform: scale(0.97) translateY(-1px) rotate(-1deg);
+    filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.6));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04) translateY(0.5px) rotate(1deg);
+    filter: drop-shadow(0 0 12px rgba(255, 107, 0, 0.9));
+  }
+  75% {
+    opacity: 0.85;
+    transform: scale(0.98) translateY(-0.5px);
+    filter: drop-shadow(0 0 7px rgba(245, 158, 11, 0.7));
+  }
+}
+
+.animate-candle-flame {
+  animation: candleFlicker 2.4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes sparkleShimmer {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkleShimmer 3s ease-in-out infinite;
+}
+
+@keyframes orangePulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(255, 107, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 26px rgba(245, 158, 11, 0.45);
+  }
+}
+
+.pulse-glow-orange {
+  animation: orangePulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+

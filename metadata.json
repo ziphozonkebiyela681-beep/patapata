@@ -1,0 +1,6 @@
+{
+  "name": "Pata Pata | Maboneng Restaurant & Jazz Lounge",
+  "description": "Authentic South African heritage dining, 1960s Sophiatown jazz soul, and live music on Fox Street in Maboneng, Johannesburg. Browse our online menu, uncover our story, and call our desk to reserve a table.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
