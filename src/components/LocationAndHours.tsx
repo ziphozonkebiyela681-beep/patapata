@@ -274,15 +274,15 @@ export function LocationAndHours({ onOpenBooking }: LocationAndHoursProps) {
           </div>
 
           {/* 3-Photo Responsive Showcase Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             {FOX_STREET_SCENES.map((scene) => (
               <div
                 key={scene.id}
                 onClick={() => setActivePhoto(scene)}
-                className="group cursor-pointer rounded-3xl bg-zinc-950 border border-amber-500/30 hover:border-amber-400 transition-all duration-300 overflow-hidden flex flex-col shadow-lg hover:shadow-[0_0_25px_rgba(245,158,11,0.2)]"
+                className="group cursor-pointer rounded-2xl sm:rounded-3xl bg-zinc-950 border border-amber-500/30 hover:border-amber-400 transition-all duration-300 overflow-hidden flex flex-col shadow-lg hover:shadow-[0_0_25px_rgba(245,158,11,0.2)]"
               >
-                {/* Photo Container */}
-                <div className="relative aspect-[4/5] overflow-hidden bg-black">
+                {/* Photo Container - Adaptive aspect ratio: sizes down gracefully on small phone screens, full vertical portrait on laptops */}
+                <div className="relative aspect-[4/3] xs:aspect-[5/4] sm:aspect-[4/5] overflow-hidden bg-black">
                   <img
                     src={scene.image}
                     alt={scene.title}

@@ -31,7 +31,7 @@ export default function App() {
         className="fixed inset-0 pointer-events-none z-0 opacity-22 bg-makeba-pattern" 
       />
 
-      <div className="relative z-10">
+      <div className="relative z-10 pb-16 md:pb-0">
         {/* Navigation Top Bar */}
         <Navbar onOpenBooking={handleOpenBooking} />
 
@@ -69,6 +69,24 @@ export default function App() {
           isOpen={isBookingModalOpen}
           onClose={handleCloseBooking}
         />
+
+        {/* Mobile-Only Sticky Bottom Quick Bar: 1-Tap Desk Call & Menu (Height < 10% viewport) */}
+        <aside aria-label="Mobile quick actions" className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-black/92 backdrop-blur-lg border-t border-amber-500/30 px-3 py-2 flex items-center justify-between gap-2 shadow-[0_-5px_20px_rgba(0,0,0,0.8)] pb-safe">
+          <a
+            href="tel:+27113340470"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider shadow-md"
+          >
+            <span className="truncate">Call Desk (+27 11 334 0470)</span>
+          </a>
+          
+          <a
+            href="#menu"
+            className="inline-flex items-center justify-center gap-1 py-2.5 px-3 rounded-xl bg-zinc-900 border border-amber-500/40 text-amber-300 font-bold text-xs whitespace-nowrap hover:bg-zinc-800"
+          >
+            <span>Menu</span>
+          </a>
+        </aside>
+
       </div>
     </div>
   );

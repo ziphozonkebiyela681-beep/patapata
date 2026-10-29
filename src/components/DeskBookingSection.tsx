@@ -50,7 +50,7 @@ export function DeskBookingSection() {
         </div>
 
         {/* FRONTLINE DESK CALL BOX WITH CLEARLY VISIBLE WOOD-FIRED HEARTH BACKGROUND */}
-        <div className="max-w-4xl mx-auto border-2 border-amber-500/60 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden group">
+        <div className="max-w-4xl mx-auto border sm:border-2 border-amber-500/60 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden group">
           
           {/* Authentic Wood-Fired Hearth Fireplace Background Space Picture (Clearly Visible) */}
           <div className="absolute inset-0 z-0 overflow-hidden">
@@ -66,47 +66,47 @@ export function DeskBookingSection() {
           </div>
 
           {/* Top Tri-Color Jazz Glow Line */}
-          <div className="absolute inset-x-8 -top-px h-1 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-400 rounded-full z-10" />
+          <div className="absolute inset-x-4 sm:inset-x-8 -top-px h-1 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-400 rounded-full z-10" />
 
           {/* Central Translucent Call Card with High-Contrast Legibility */}
-          <div className="relative z-10 bg-black/75 backdrop-blur-md border border-amber-500/40 rounded-2xl p-6 sm:p-8 shadow-2xl flex flex-col items-center text-center">
+          <div className="relative z-10 bg-black/80 backdrop-blur-md border border-amber-500/40 rounded-xl sm:rounded-2xl p-4 sm:p-8 shadow-2xl flex flex-col items-center text-center">
             
-            <div className="relative mb-4">
-              <div className="w-16 h-16 rounded-2xl bg-black/90 border border-amber-500/60 flex items-center justify-center text-amber-400 shadow-[0_0_24px_rgba(245,158,11,0.5)]">
-                <Phone className="w-8 h-8" />
+            <div className="relative mb-3 sm:mb-4">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-black/90 border border-amber-500/60 flex items-center justify-center text-amber-400 shadow-[0_0_24px_rgba(245,158,11,0.5)]">
+                <Phone className="w-6 h-6 sm:w-8 sm:h-8" />
               </div>
-              <div className="absolute -top-3 -right-3">
-                <CandleFlame className="scale-75" />
+              <div className="absolute -top-2.5 -right-2.5 sm:-top-3 sm:-right-3">
+                <CandleFlame className="scale-65 sm:scale-75" />
               </div>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/80 border border-amber-500/40 text-[11px] uppercase tracking-widest text-amber-300 font-extrabold mb-2 shadow-sm">
-              <Flame className="w-3.5 h-3.5 text-orange-400" />
-              <span>Frontline Desk Direct Line · 7 Days A Week</span>
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full bg-black/80 border border-amber-500/40 text-[10px] sm:text-[11px] uppercase tracking-wider sm:tracking-widest text-amber-300 font-extrabold mb-2 shadow-sm">
+              <Flame className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-orange-400" />
+              <span>Frontline Desk · 7 Days A Week</span>
             </div>
 
-            <div className="text-3xl sm:text-5xl font-display font-black text-white tracking-wider mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+            <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-display font-black text-white tracking-wide sm:tracking-wider mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] break-keep">
               {primaryPhone}
             </div>
 
-            <p className="text-xs sm:text-sm text-zinc-200 mb-8 max-w-md drop-shadow">
+            <p className="text-xs sm:text-sm text-zinc-200 mb-6 sm:mb-8 max-w-md drop-shadow">
               Speak directly to our floor host. For large group feasts, candlelit live jazz evenings, or sidewalk patio tables.
             </p>
 
             {/* Action buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-4 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 w-full sm:w-auto">
               <a
                 href={`tel:${rawPhone}`}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-base hover:brightness-110 active:scale-95 transition-all shadow-[0_0_30px_rgba(245,158,11,0.7)]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs sm:text-sm uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_30px_rgba(245,158,11,0.7)]"
               >
-                <Phone className="w-5 h-5 fill-black" />
-                <span>Tap To Call The Desk</span>
+                <Phone className="w-4 h-4 fill-black" />
+                <span>Tap To Call Desk</span>
               </a>
 
               <button
                 type="button"
                 onClick={copyNumber}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-black/90 border border-amber-500/50 text-amber-200 font-bold text-sm hover:text-white hover:bg-black transition-colors"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-xl bg-black/90 border border-amber-500/50 text-amber-200 font-bold text-xs sm:text-sm hover:text-white hover:bg-black transition-colors"
               >
                 {copied ? (
                   <>
@@ -125,17 +125,17 @@ export function DeskBookingSection() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-black/80 border border-zinc-700 text-zinc-200 font-semibold text-sm hover:text-white hover:bg-black transition-colors"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-xl bg-black/80 border border-zinc-700 text-zinc-200 font-semibold text-xs sm:text-sm hover:text-white hover:bg-black transition-colors"
               >
                 <MessageCircle className="w-4 h-4 text-orange-400" />
-                <span>WhatsApp Desk: {altPhone}</span>
+                <span>WhatsApp: {altPhone}</span>
               </a>
             </div>
 
             {/* Wood-Fired Hearth Badge */}
-            <div className="mt-6 flex items-center gap-2 text-xs text-amber-300 font-semibold bg-black/80 px-4 py-1.5 rounded-full border border-amber-500/30">
-              <Flame className="w-3.5 h-3.5 text-red-500" />
-              <span>Wood-Fired Hearth Oven & Slow-Simmered Soul Food</span>
+            <div className="mt-5 sm:mt-6 flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-amber-300 font-semibold bg-black/80 px-3 sm:px-4 py-1.5 rounded-full border border-amber-500/30">
+              <Flame className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-red-500 shrink-0" />
+              <span>Wood-Fired Hearth & Slow-Simmered Soul Food</span>
             </div>
 
           </div>

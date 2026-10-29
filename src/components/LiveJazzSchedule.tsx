@@ -74,8 +74,8 @@ export function LiveJazzSchedule({ onOpenBooking }: LiveJazzScheduleProps) {
           {/* Top Tri-Color Neon Glow Bar */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400 z-20" />
 
-          {/* Band Photo */}
-          <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-black">
+          {/* Band Photo with Adaptive Aspect Ratio */}
+          <div className="relative aspect-[4/3] xs:aspect-[5/4] sm:aspect-[16/10] lg:aspect-[16/9] min-h-[320px] sm:min-h-0 w-full overflow-hidden bg-black">
             <img
               src={bandPhotoUrl}
               alt="Pata Pata live jazz band performing at the Fox Street window bandstand"
@@ -84,26 +84,26 @@ export function LiveJazzSchedule({ onOpenBooking }: LiveJazzScheduleProps) {
             />
 
             {/* Measured Scrim Gradient for Legibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent opacity-85" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent opacity-90" />
 
             {/* Floating Overlays on the Band Photo */}
-            <div className="absolute top-6 left-6 z-15 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-amber-500/50 text-amber-300 text-xs font-bold shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-              <span>LIVE BANDSTAND · 286 FOX STREET</span>
+            <div className="absolute top-3 sm:top-6 left-3 sm:left-6 z-15 flex items-center gap-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/50 text-amber-300 text-[10px] sm:text-xs font-bold shadow-lg">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-red-500 animate-pulse" />
+              <span>LIVE BANDSTAND · FOX ST</span>
             </div>
 
-            <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 z-15">
+            <div className="absolute bottom-4 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 z-15">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-amber-500/40 text-amber-300 text-xs font-bold mb-2">
-                  <Volume2 className="w-3.5 h-3.5 text-orange-400" />
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-300 text-[10px] sm:text-xs font-bold mb-1.5 sm:mb-2">
+                  <Volume2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-orange-400" />
                   <span>The Resident Quartet</span>
                 </div>
                 
-                <h3 className="text-xl sm:text-3xl font-black font-display text-white drop-shadow-lg">
+                <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-black font-display text-white drop-shadow-lg leading-tight">
                   Saxophone · Keys · Drums · Bass
                 </h3>
                 
-                <p className="text-xs sm:text-sm text-zinc-300 max-w-lg mt-1 drop-shadow leading-relaxed">
+                <p className="text-[11px] sm:text-sm text-zinc-300 max-w-lg mt-1 drop-shadow leading-relaxed line-clamp-2 sm:line-clamp-none">
                   Performing right by the front Fox Street window under the illuminated Pata Pata Live Music neon sign every weekend.
                 </p>
               </div>
@@ -111,10 +111,10 @@ export function LiveJazzSchedule({ onOpenBooking }: LiveJazzScheduleProps) {
               <div className="flex items-center gap-3 shrink-0">
                 <button
                   onClick={onOpenBooking}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_25px_rgba(245,158,11,0.5)]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-[11px] sm:text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_25px_rgba(245,158,11,0.5)]"
                 >
-                  <Phone className="w-4 h-4 fill-black" />
-                  <span>Book Front-Row Stage Table</span>
+                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-black" />
+                  <span>Book Front-Row Table</span>
                 </button>
               </div>
             </div>

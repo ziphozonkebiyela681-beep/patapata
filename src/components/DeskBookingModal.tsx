@@ -83,24 +83,24 @@ export function DeskBookingModal({ isOpen, onClose }: DeskBookingModalProps) {
           </div>
           
           {/* Foreground Call Card Content */}
-          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-amber-300 font-bold mb-1">
+              <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs uppercase tracking-wider text-amber-300 font-bold mb-1">
                 <Flame className="w-3.5 h-3.5 text-orange-400" />
                 <span>Pata Pata Main Desk Line</span>
               </div>
-              <div className="text-2xl sm:text-3xl font-display font-black tracking-wider text-white mt-0.5 drop-shadow-md">
+              <div className="text-xl xs:text-2xl sm:text-3xl font-display font-black tracking-wide sm:tracking-wider text-white mt-0.5 drop-shadow-md break-keep">
                 {primaryPhone}
               </div>
-              <span className="text-xs text-zinc-300 mt-1 block">
-                Local SA: 011 334 0470 · Alternate / Mobile: {altPhone}
+              <span className="text-[11px] sm:text-xs text-zinc-300 mt-1 block">
+                Local SA: 011 334 0470 · Mobile: {altPhone}
               </span>
             </div>
 
             <div className="flex items-center gap-2">
               <a
                 href={`tel:${rawPhone}`}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-sm hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(245,158,11,0.5)]"
+                className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs sm:text-sm hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(245,158,11,0.5)]"
               >
                 <Phone className="w-4 h-4 fill-black" />
                 <span>Call Desk Now</span>
@@ -109,7 +109,7 @@ export function DeskBookingModal({ isOpen, onClose }: DeskBookingModalProps) {
               <button
                 type="button"
                 onClick={() => copyToClipboard(primaryPhone)}
-                className="p-3 rounded-xl bg-black/75 backdrop-blur-md border border-amber-500/40 text-amber-200 hover:text-white hover:bg-black/90 transition-colors"
+                className="p-2.5 sm:p-3 rounded-xl bg-black/75 backdrop-blur-md border border-amber-500/40 text-amber-200 hover:text-white hover:bg-black/90 transition-colors"
                 title="Copy phone number"
                 aria-label="Copy phone number"
               >
@@ -126,8 +126,8 @@ export function DeskBookingModal({ isOpen, onClose }: DeskBookingModalProps) {
         </div>
 
         {/* Desk Schedule & Hours */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 text-xs">
-          <div className="p-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800 flex items-start gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 mb-5 sm:mb-6 text-xs">
+          <div className="p-3 sm:p-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800 flex items-start gap-2.5 sm:gap-3">
             <Clock className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
             <div>
               <span className="font-semibold text-zinc-200 block">Desk Hours</span>
@@ -135,7 +135,7 @@ export function DeskBookingModal({ isOpen, onClose }: DeskBookingModalProps) {
             </div>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800 flex items-start gap-3">
+          <div className="p-3 sm:p-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800 flex items-start gap-2.5 sm:gap-3">
             <MapPin className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
             <div>
               <span className="font-semibold text-zinc-200 block">Venue Address</span>
@@ -145,7 +145,7 @@ export function DeskBookingModal({ isOpen, onClose }: DeskBookingModalProps) {
         </div>
 
         {/* Reservation Call Assistant / Cheatsheet */}
-        <div className="p-4 rounded-xl bg-zinc-900/60 border border-amber-500/20 mb-6">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-zinc-900/60 border border-amber-500/20 mb-5 sm:mb-6">
           <div className="flex items-center gap-2 mb-3">
             <CandleFlame className="scale-65" />
             <h3 className="text-xs font-bold uppercase tracking-wider text-amber-300">
@@ -153,7 +153,7 @@ export function DeskBookingModal({ isOpen, onClose }: DeskBookingModalProps) {
             </h3>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-xs">
+          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-xs">
             <div>
               <label className="text-[11px] text-zinc-400 block mb-1">Guests</label>
               <select

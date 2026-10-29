@@ -48,23 +48,23 @@ export function StorySection() {
           <div className="lg:col-span-5 flex flex-col items-center text-center">
             
             {/* Pure isolated text signature floating on canvas */}
-            <div className="relative py-4 w-full flex flex-col items-center justify-center">
+            <div className="relative py-2 sm:py-4 w-full flex flex-col items-center justify-center">
               <div 
                 aria-hidden="true" 
                 className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-orange-500/30 to-yellow-400/20 blur-2xl rounded-full pointer-events-none" 
               />
               <PataPataSignature 
-                className="w-auto h-28 sm:h-36 text-white filter drop-shadow-[0_0_25px_rgba(255,107,0,0.5)]" 
+                className="w-auto h-16 xs:h-20 sm:h-28 md:h-36 text-white filter drop-shadow-[0_0_25px_rgba(255,107,0,0.5)]" 
                 color="jazz"
                 glow
               />
-              <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-amber-400 mt-3 block">
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase text-amber-400 mt-2 sm:mt-3 block">
                 The Signature Geometric Mark
               </span>
             </div>
 
             {/* The Retro Heritage Soul Entrance Feature Card */}
-            <div className="relative rounded-2xl overflow-hidden border border-amber-500/35 my-4 w-full shadow-2xl group">
+            <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-amber-500/35 my-3 sm:my-4 w-full shadow-2xl group">
               <div className="aspect-[4/3] w-full overflow-hidden bg-black">
                 <img 
                   src={entrancePhotoUrl} 
@@ -74,26 +74,26 @@ export function StorySection() {
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent pointer-events-none" />
-              <div className="absolute bottom-3 left-3 right-3 text-left">
-                <span className="text-[10px] uppercase font-bold tracking-wider text-amber-400 block">
+              <div className="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 text-left">
+                <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-amber-400 block">
                   Retro Heritage Soul Entrance
                 </span>
-                <span className="text-xs text-white font-semibold block">
+                <span className="text-[11px] sm:text-xs text-white font-semibold block">
                   286 Fox Street · Open Steel French Doors
                 </span>
               </div>
             </div>
 
             {/* Candlelit Jazz Era Quote */}
-            <div className="w-full mt-2 p-5 rounded-2xl bg-zinc-950/80 border border-amber-500/30 relative text-left">
+            <div className="w-full mt-2 p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-zinc-950/80 border border-amber-500/30 relative text-left">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-amber-400 text-3xl font-serif leading-none">&ldquo;</span>
-                <CandleFlame className="scale-80" />
+                <span className="text-amber-400 text-2xl sm:text-3xl font-serif leading-none">&ldquo;</span>
+                <CandleFlame className="scale-75 sm:scale-80" />
               </div>
               <p className="text-xs sm:text-sm italic text-zinc-200 mb-3 leading-relaxed font-serif">
                 &ldquo;Pata Pata is the name of a dance we do down in Johannesburg... and everybody starts to move as soon as Pata Pata starts to play.&rdquo;
               </p>
-              <div className="flex items-center justify-between text-xs text-zinc-400 border-t border-zinc-800 pt-2.5">
+              <div className="flex items-center justify-between text-[11px] sm:text-xs text-zinc-400 border-t border-zinc-800 pt-2.5">
                 <span className="font-bold text-amber-300">Miriam Makeba</span>
                 <span className="text-orange-400 font-mono">Released 1967</span>
               </div>
@@ -102,69 +102,69 @@ export function StorySection() {
           </div>
 
           {/* Right Column: Editorial Chapters */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6">
             
             {/* Chapter 01 */}
-            <div className="p-6 rounded-2xl bg-zinc-950/70 border border-zinc-800/80 hover:border-amber-500/50 transition-colors relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-red-500 to-orange-500" />
-              <div className="flex items-center gap-3 mb-2.5">
-                <div className="w-8 h-8 rounded-lg bg-black border border-zinc-700 flex items-center justify-center text-amber-400">
-                  <Disc3 className="w-4 h-4 animate-spin [animation-duration:8s]" />
+            <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-zinc-950/70 border border-zinc-800/80 hover:border-amber-500/50 transition-colors relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-1 sm:w-1.5 h-full bg-gradient-to-b from-red-500 to-orange-500" />
+              <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-black border border-zinc-700 flex items-center justify-center text-amber-400 shrink-0">
+                  <Disc3 className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-spin [animation-duration:8s]" />
                 </div>
-                <h3 className="text-lg font-bold font-display text-white">
+                <h3 className="text-base sm:text-lg font-bold font-display text-white">
                   01. The Sophiatown 1960s Marabi Spirit
                 </h3>
               </div>
-              <p className="text-sm text-zinc-300 leading-relaxed pl-1">
+              <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed pl-1">
                 In the 1950s and 60s, Sophiatown (Kofifi) was South Africa’s cultural Harlem—a fiery crucible of marabi rhythms, kwela pennywhistles, swing jazz, bohemian writers, and candlelit shebeens. Pata Pata was created to keep that immortal vibe alive: vintage mismatched wooden chairs, tin mugs, warm vinyl crackle, and the soulful feeling of shared community.
               </p>
             </div>
 
             {/* Chapter 02 */}
-            <div className="p-6 rounded-2xl bg-zinc-950/70 border border-zinc-800/80 hover:border-amber-500/50 transition-colors relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-orange-500 to-yellow-400" />
-              <div className="flex items-center gap-3 mb-2.5">
-                <div className="w-8 h-8 rounded-lg bg-black border border-zinc-700 flex items-center justify-center text-orange-400">
-                  <MapPin className="w-4 h-4" />
+            <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-zinc-950/70 border border-zinc-800/80 hover:border-amber-500/50 transition-colors relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-1 sm:w-1.5 h-full bg-gradient-to-b from-orange-500 to-yellow-400" />
+              <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-black border border-zinc-700 flex items-center justify-center text-orange-400 shrink-0">
+                  <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
-                <h3 className="text-lg font-bold font-display text-white">
+                <h3 className="text-base sm:text-lg font-bold font-display text-white">
                   02. Beating Heart of Maboneng
                 </h3>
               </div>
-              <p className="text-sm text-zinc-300 leading-relaxed pl-1">
+              <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed pl-1">
                 Maboneng translates to <em>&ldquo;Place of Light&rdquo;</em> in Sesotho. Located at 286 Fox Street, our open industrial French doors welcome artists, travelers, local musicians, and Sunday brunchers stepping from the paved sidewalk into an oasis of jazz and heritage cuisine.
               </p>
             </div>
 
             {/* Chapter 03 */}
-            <div className="p-6 rounded-2xl bg-zinc-950/70 border border-zinc-800/80 hover:border-amber-500/50 transition-colors relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-yellow-400 to-red-600" />
-              <div className="flex items-center gap-3 mb-2.5">
-                <div className="w-8 h-8 rounded-lg bg-black border border-zinc-700 flex items-center justify-center text-red-400">
-                  <Flame className="w-4 h-4" />
+            <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-zinc-950/70 border border-zinc-800/80 hover:border-amber-500/50 transition-colors relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-1 sm:w-1.5 h-full bg-gradient-to-b from-yellow-400 to-red-600" />
+              <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-black border border-zinc-700 flex items-center justify-center text-red-400 shrink-0">
+                  <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
-                <h3 className="text-lg font-bold font-display text-white">
+                <h3 className="text-base sm:text-lg font-bold font-display text-white">
                   03. Slow Cast-Iron Fires & Heritage Food
                 </h3>
               </div>
-              <p className="text-sm text-zinc-300 leading-relaxed pl-1">
+              <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed pl-1">
                 Our kitchen respects the heritage. Mogodu is slow-simmered in aromatic broth until it is tender as silk. Rich oxtail rests in cast-iron potjies soaking in Cape red wine and spices for 6 hours. From freshly steamed dumpling bread (jeqe) to spicy braai chakalaka, every dish is an authentic South African homecoming.
               </p>
             </div>
 
             {/* Pillars strip in warm tones */}
-            <div className="grid grid-cols-3 gap-3 pt-2 text-center">
-              <div className="p-3.5 rounded-xl bg-black border border-zinc-800">
-                <span className="block text-xl font-display font-black text-amber-400">1967</span>
-                <span className="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">Makeba Roots</span>
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-2 text-center">
+              <div className="p-2.5 sm:p-3.5 rounded-xl bg-black border border-zinc-800">
+                <span className="block text-lg sm:text-xl font-display font-black text-amber-400">1967</span>
+                <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">Makeba Roots</span>
               </div>
-              <div className="p-3.5 rounded-xl bg-black border border-zinc-800">
-                <span className="block text-xl font-display font-black text-orange-400">286 Fox</span>
-                <span className="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">Maboneng, JHB</span>
+              <div className="p-2.5 sm:p-3.5 rounded-xl bg-black border border-zinc-800">
+                <span className="block text-lg sm:text-xl font-display font-black text-orange-400">286 Fox</span>
+                <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">Maboneng, JHB</span>
               </div>
-              <div className="p-3.5 rounded-xl bg-black border border-zinc-800">
-                <span className="block text-xl font-display font-black text-red-400">7 Days</span>
-                <span className="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">Candlelit Late</span>
+              <div className="p-2.5 sm:p-3.5 rounded-xl bg-black border border-zinc-800">
+                <span className="block text-lg sm:text-xl font-display font-black text-red-400">7 Days</span>
+                <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">Candlelit Late</span>
               </div>
             </div>
 

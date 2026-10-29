@@ -197,7 +197,7 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
 
         {/* THE BIG MAIN FEATURED ATMOSPHERE PICTURE CAROUSEL SWITCHER */}
         <div 
-          className="relative rounded-3xl overflow-hidden border-2 border-amber-500/50 bg-zinc-950 shadow-2xl mb-12 group"
+          className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-amber-500/40 sm:border-2 sm:border-amber-500/50 bg-zinc-950 shadow-2xl mb-8 sm:mb-12 group"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -214,8 +214,8 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
             />
           </div>
 
-          {/* Aspect Ratio Container for Photos */}
-          <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-black">
+          {/* Aspect Ratio Container for Photos - Adaptive height: taller aspect on small phones so overlays fit cleanly without obscuring the image, landscape 16:9 on laptops */}
+          <div className="relative aspect-[4/3] xs:aspect-[5/4] sm:aspect-[16/10] lg:aspect-[16/9] min-h-[340px] sm:min-h-0 w-full overflow-hidden bg-black">
             
             {/* Photo 1: Candlelit Tables & Chalkboard Beams */}
             <div 
@@ -246,33 +246,34 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
             </div>
             
             {/* Measured Scrim Gradient for Legibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/20 opacity-90 z-15 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/30 opacity-90 z-15 pointer-events-none" />
 
-            {/* Top Navigation Overlay Controls */}
-            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-25 pointer-events-none">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-amber-500/40 text-amber-300 text-xs font-bold pointer-events-auto shadow-lg">
-                <CandleFlame className="scale-65" />
-                <span>{currentPhoto.badge}</span>
+            {/* Top Navigation Overlay Controls - Responsive spacing & size */}
+            <div className="absolute top-2.5 sm:top-4 left-2.5 sm:left-4 right-2.5 sm:right-4 flex items-center justify-between gap-2 z-25 pointer-events-none">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-300 text-[10px] sm:text-xs font-bold pointer-events-auto shadow-lg truncate max-w-[65%] sm:max-w-none">
+                <CandleFlame className="scale-65 shrink-0" />
+                <span className="truncate">{currentPhoto.badge}</span>
               </div>
 
-              <div className="flex items-center gap-2 pointer-events-auto">
+              <div className="flex items-center gap-1.5 sm:gap-2 pointer-events-auto shrink-0">
                 <button
                   type="button"
                   onClick={() => setIsPaused(!isPaused)}
-                  className="p-2 rounded-full bg-black/75 backdrop-blur-md border border-zinc-700 text-zinc-300 hover:text-white hover:border-amber-400 transition-colors"
+                  className="p-1.5 sm:p-2 rounded-full bg-black/80 backdrop-blur-md border border-zinc-700 text-zinc-300 hover:text-white hover:border-amber-400 transition-colors"
                   aria-label={isPaused ? 'Resume auto-switch' : 'Pause auto-switch'}
                   title={isPaused ? 'Resume auto-switch' : 'Pause auto-switch'}
                 >
-                  {isPaused ? <Play className="w-3.5 h-3.5 fill-current" /> : <Pause className="w-3.5 h-3.5 fill-current" />}
+                  {isPaused ? <Play className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" /> : <Pause className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />}
                 </button>
                 <button
                   type="button"
                   onClick={goToNext}
-                  className="px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-amber-500/40 text-amber-300 hover:text-white hover:bg-black/90 text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
+                  className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-amber-500/40 text-amber-300 hover:text-white hover:bg-black text-[10px] sm:text-xs font-bold transition-all shadow-md flex items-center gap-1"
                   aria-label="Switch to next picture"
                 >
-                  <span>Switch Photo</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
+                  <span className="hidden xs:inline">Next</span>
+                  <span className="xs:hidden">Switch</span>
+                  <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </button>
               </div>
             </div>
@@ -281,46 +282,46 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
             <button
               type="button"
               onClick={goToPrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-25 p-3 rounded-full bg-black/70 backdrop-blur-md border border-amber-500/40 text-amber-300 hover:text-white hover:bg-black/95 hover:scale-110 active:scale-95 transition-all shadow-xl"
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-25 p-2 sm:p-3 rounded-full bg-black/75 backdrop-blur-md border border-amber-500/40 text-amber-300 hover:text-white hover:bg-black hover:scale-105 active:scale-95 transition-all shadow-xl"
               aria-label="Previous view"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             <button
               type="button"
               onClick={goToNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-25 p-3 rounded-full bg-black/70 backdrop-blur-md border border-amber-500/40 text-amber-300 hover:text-white hover:bg-black/95 hover:scale-110 active:scale-95 transition-all shadow-xl"
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-25 p-2 sm:p-3 rounded-full bg-black/75 backdrop-blur-md border border-amber-500/40 text-amber-300 hover:text-white hover:bg-black hover:scale-105 active:scale-95 transition-all shadow-xl"
               aria-label="Next view"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
-            {/* In-Photo Floating Captions & Interactive CTA */}
-            <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 z-25">
+            {/* In-Photo Floating Captions & Interactive CTA - Adaptive padding and typography */}
+            <div className="absolute bottom-5 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 z-25">
               <div className="max-w-xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-300 text-xs font-bold mb-2 shadow-md">
-                  <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                  <span>{currentPhoto.subcaption}</span>
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-300 text-[10px] sm:text-xs font-bold mb-1.5 sm:mb-2 shadow-md">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-amber-400 animate-pulse" />
+                  <span className="truncate">{currentPhoto.subcaption}</span>
                 </div>
                 
-                <h3 className="text-xl sm:text-2xl font-bold font-display text-white drop-shadow-md">
+                <h3 className="text-lg xs:text-xl sm:text-2xl font-bold font-display text-white drop-shadow-md leading-tight">
                   {currentPhoto.title}
                 </h3>
                 
-                <p className="text-xs sm:text-sm text-zinc-300 drop-shadow mt-1">
+                <p className="text-[11px] sm:text-sm text-zinc-300 drop-shadow mt-1 line-clamp-2 sm:line-clamp-none">
                   {currentPhoto.description}
                 </p>
 
                 {/* Social tag inline */}
-                <div className="flex items-center gap-3 mt-2 text-xs text-amber-400/90 font-medium">
+                <div className="flex items-center gap-2 sm:gap-3 mt-1.5 sm:mt-2 text-[11px] sm:text-xs text-amber-400/90 font-medium">
                   <a 
                     href={SOCIAL_LINKS.instagram} 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="hover:underline flex items-center gap-1"
                   >
-                    <InstagramIcon className="w-3.5 h-3.5" />
+                    <InstagramIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     <span>{SOCIAL_LINKS.handle}</span>
                   </a>
                   <span>·</span>
@@ -330,35 +331,35 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
                     rel="noopener noreferrer" 
                     className="hover:underline flex items-center gap-1"
                   >
-                    <TikTokIcon className="w-3.5 h-3.5" />
-                    <span>TikTok @pata.pata_maboneng</span>
+                    <TikTokIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                    <span>TikTok</span>
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                 <button
                   type="button"
                   onClick={onOpenBooking}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 transition-all shadow-lg shadow-orange-950/60 shrink-0"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-[11px] sm:text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-orange-950/60 shrink-0"
                 >
-                  <Phone className="w-4 h-4 fill-black" />
-                  <span>Call For A Table Like This</span>
+                  <Phone className="w-3.5 h-3.5 fill-black" />
+                  <span>Call For A Table</span>
                 </button>
               </div>
             </div>
 
             {/* Bottom-Center Dots Indicator */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 z-25">
+            <div className="absolute bottom-1.5 sm:bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 sm:gap-2 z-25">
               {photos.map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
                   onClick={() => setCurrentIndex(idx)}
-                  className={`h-2 rounded-full transition-all ${
+                  className={`h-1.5 sm:h-2 rounded-full transition-all ${
                     currentIndex === idx
-                      ? 'w-8 bg-amber-400 shadow-[0_0_8px_#f59e0b]'
-                      : 'w-2 bg-white/40 hover:bg-white/80'
+                      ? 'w-6 sm:w-8 bg-amber-400 shadow-[0_0_8px_#f59e0b]'
+                      : 'w-1.5 sm:w-2 bg-white/40 hover:bg-white/80'
                   }`}
                   aria-label={`Jump to atmosphere view ${idx + 1}`}
                 />

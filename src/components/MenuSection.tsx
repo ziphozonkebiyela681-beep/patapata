@@ -234,34 +234,34 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
         )}
 
         {/* Menu Items Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
           {filteredItems.map((item) => {
             const isWishlisted = wishlist.some(w => w.id === item.id);
             return (
               <div
                 key={item.id}
                 onClick={() => setSelectedDish(item)}
-                className="group relative p-6 rounded-2xl bg-zinc-950 border border-zinc-850 hover:border-amber-500/50 hover:bg-zinc-900/70 transition-all cursor-pointer flex flex-col justify-between"
+                className="group relative p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-zinc-950 border border-zinc-850 hover:border-amber-500/50 hover:bg-zinc-900/70 transition-all cursor-pointer flex flex-col justify-between"
               >
                 <div>
                   {/* Card Top: Title, Price, & Action */}
-                  <div className="flex items-start justify-between gap-4 mb-2">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-lg font-bold font-display text-white group-hover:text-amber-400 transition-colors">
+                  <div className="flex items-start justify-between gap-2.5 sm:gap-4 mb-2">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                        <h3 className="text-base sm:text-lg font-bold font-display text-white group-hover:text-amber-400 transition-colors">
                           {item.name}
                         </h3>
                         {item.isChefSpecial && (
-                          <span className="text-[10px] uppercase font-extrabold tracking-wider text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/30 shrink-0 flex items-center gap-1">
+                          <span className="text-[9px] sm:text-[10px] uppercase font-extrabold tracking-wider text-amber-400 bg-amber-400/10 px-1.5 sm:px-2 py-0.5 rounded border border-amber-400/30 shrink-0 flex items-center gap-1">
                             ★ Special
                           </span>
                         )}
                       </div>
                       
                       {/* Zero-Pill Metadata */}
-                      <div className="flex items-center gap-2 text-xs text-zinc-400 mt-1">
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-zinc-400 mt-1">
                         {item.tags.map((t, idx) => (
-                          <span key={idx} className="flex items-center gap-2">
+                          <span key={idx} className="flex items-center gap-1.5 sm:gap-2">
                             <span>{t}</span>
                             {idx < item.tags.length - 1 && <span aria-hidden="true">·</span>}
                           </span>
@@ -279,29 +279,29 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
                     </div>
 
                     {/* Price in Rand */}
-                    <div className="text-right shrink-0">
-                      <span className="text-lg font-black font-display tracking-tight text-amber-300 tabular-nums">
+                    <div className="text-right shrink-0 pl-1">
+                      <span className="text-base sm:text-lg font-black font-display tracking-tight text-amber-300 tabular-nums">
                         R{item.price}
                       </span>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-zinc-300 line-clamp-2 leading-relaxed mb-4">
+                  <p className="text-xs sm:text-sm text-zinc-300 line-clamp-2 leading-relaxed mb-3 sm:mb-4">
                     {item.description}
                   </p>
                 </div>
 
                 {/* Card Bottom: Pairing / Wishlist trigger */}
-                <div className="flex items-center justify-between pt-3 border-t border-zinc-900 text-xs">
-                  <span className="text-zinc-400 truncate max-w-[240px]">
-                    {item.pairing ? `Pairing: ${item.pairing}` : 'Tap for culinary story'}
+                <div className="flex items-center justify-between pt-2.5 sm:pt-3 border-t border-zinc-900 text-xs gap-2">
+                  <span className="text-zinc-400 truncate text-[11px] sm:text-xs max-w-[170px] sm:max-w-[240px]">
+                    {item.pairing ? `Pairing: ${item.pairing}` : 'Tap for details'}
                   </span>
 
                   <button
                     type="button"
                     onClick={(e) => toggleWishlist(item, e)}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
+                    className={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-bold transition-all shrink-0 ${
                       isWishlisted
                         ? 'bg-amber-400 text-black font-extrabold shadow-[0_0_10px_rgba(251,191,36,0.4)]'
                         : 'bg-zinc-900 text-amber-300 hover:text-white hover:bg-orange-600 hover:text-black'

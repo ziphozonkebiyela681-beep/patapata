@@ -52,7 +52,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
         </div>
 
         {/* ISOLATED SIGNATURE LOGOTYPE (NO BOX, NO BORDER, PURE WRITING ONLY) */}
-        <div className="mb-7 relative flex flex-col items-center">
+        <div className="mb-5 sm:mb-7 relative flex flex-col items-center">
           {/* Subtle warm amber/red starlight behind the signature writing */}
           <div 
             aria-hidden="true" 
@@ -61,13 +61,13 @@ export function Hero({ onOpenBooking }: HeroProps) {
           
           <div className="relative group cursor-default">
             <PataPataSignature 
-              className="w-auto h-28 sm:h-36 md:h-44 text-white hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_30px_rgba(255,107,0,0.65)]"
+              className="w-auto h-20 xs:h-24 sm:h-32 md:h-40 lg:h-44 text-white hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_30px_rgba(255,107,0,0.65)]"
               color="jazz"
               glow
             />
           </div>
 
-          <div className="mt-3 flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-amber-400 font-extrabold drop-shadow">
+          <div className="mt-2.5 sm:mt-3 flex items-center gap-1.5 sm:gap-2 text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.3em] text-amber-400 font-extrabold drop-shadow">
             <span className="text-red-500">Touch</span>
             <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
             <span className="text-orange-400">Touch</span>
@@ -77,25 +77,25 @@ export function Hero({ onOpenBooking }: HeroProps) {
         </div>
 
         {/* Jazzy Geometric Chevron Ribbon */}
-        <div className="w-full max-w-md my-3">
+        <div className="w-full max-w-md my-2 sm:my-3">
           <JazzyPatternRibbon />
         </div>
 
         {/* Editorial Headline with warm fiery accents */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-black font-display tracking-tight text-white max-w-3xl leading-[1.08] mb-5 text-balance drop-shadow-[0_3px_15px_rgba(0,0,0,0.9)]">
+        <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-display tracking-tight text-white max-w-3xl leading-[1.12] sm:leading-[1.08] mb-3 sm:mb-5 text-balance drop-shadow-[0_3px_15px_rgba(0,0,0,0.9)]">
           The Beating Heart of Fox Street. Where <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">Candlelit Afro-Jazz</span> Meets Heritage Soul.
         </h1>
 
         {/* Subtitle */}
-        <p className="text-base sm:text-lg text-zinc-200 max-w-2xl leading-relaxed mb-9 font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+        <p className="text-xs xs:text-sm sm:text-base md:text-lg text-zinc-200 max-w-2xl leading-relaxed mb-6 sm:mb-9 font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
           Honoring Miriam Makeba&apos;s timeless rhythm. Slow-simmered rich Mogodu, cast-iron oxtail potjies, sizzling peri-peri grills, and warm candlelight over Fox Street every evening.
         </p>
 
         {/* Main CTA Cluster */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-14">
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto mb-10 sm:mb-14">
           <button
             onClick={onOpenBooking}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-sm uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_30px_rgba(245,158,11,0.6)]"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs sm:text-sm uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_30px_rgba(245,158,11,0.6)]"
           >
             <Phone className="w-4 h-4 fill-black" />
             <span>Call Desk To Book</span>
@@ -103,7 +103,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
 
           <a
             href="#menu"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-black/75 backdrop-blur-md border border-amber-500/40 text-amber-200 font-bold text-sm hover:bg-black/90 hover:border-amber-400 hover:text-white transition-all shadow-lg"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-black/75 backdrop-blur-md border border-amber-500/40 text-amber-200 font-bold text-xs sm:text-sm hover:bg-black/90 hover:border-amber-400 hover:text-white transition-all shadow-lg"
           >
             <span>Explore Online Menu</span>
             <ArrowDown className="w-4 h-4 text-orange-400" />
@@ -111,46 +111,46 @@ export function Hero({ onOpenBooking }: HeroProps) {
         </div>
 
         {/* 4-Item Quick Facts Strip with Red/Yellow/Orange Highlights */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full max-w-4xl text-left">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 w-full max-w-4xl text-left">
           
-          <div className="p-4 rounded-xl bg-black/80 backdrop-blur-md border border-orange-500/30 hover:border-orange-500/60 transition-colors relative overflow-hidden">
+          <div className="p-3 sm:p-4 rounded-xl bg-black/80 backdrop-blur-md border border-orange-500/30 hover:border-orange-500/60 transition-colors relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 to-orange-500" />
-            <div className="flex items-center gap-2 text-orange-400 mb-1">
-              <Phone className="w-4 h-4" />
-              <span className="text-[11px] font-bold tracking-wider uppercase text-zinc-300">Desk Line</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 text-orange-400 mb-1">
+              <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-zinc-300">Desk Line</span>
             </div>
-            <span className="text-sm font-bold text-white block">+27 11 334 0470</span>
-            <span className="text-[11px] text-amber-300">Call to hold table</span>
+            <span className="text-xs sm:text-sm font-bold text-white block truncate">+27 11 334 0470</span>
+            <span className="text-[10px] sm:text-[11px] text-amber-300">Call to hold table</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-black/80 backdrop-blur-md border border-yellow-500/30 hover:border-yellow-500/60 transition-colors relative overflow-hidden">
+          <div className="p-3 sm:p-4 rounded-xl bg-black/80 backdrop-blur-md border border-yellow-500/30 hover:border-yellow-500/60 transition-colors relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-orange-500 to-yellow-400" />
-            <div className="flex items-center gap-2 text-yellow-400 mb-1">
-              <Music className="w-4 h-4" />
-              <span className="text-[11px] font-bold tracking-wider uppercase text-zinc-300">Live Jazz</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 text-yellow-400 mb-1">
+              <Music className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-zinc-300">Live Jazz</span>
             </div>
-            <span className="text-sm font-bold text-white block">Fri, Sat & Sun</span>
-            <span className="text-[11px] text-amber-300">Candlelight sets</span>
+            <span className="text-xs sm:text-sm font-bold text-white block">Fri, Sat & Sun</span>
+            <span className="text-[10px] sm:text-[11px] text-amber-300">Candlelight sets</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-black/80 backdrop-blur-md border border-red-500/30 hover:border-red-500/60 transition-colors relative overflow-hidden">
+          <div className="p-3 sm:p-4 rounded-xl bg-black/80 backdrop-blur-md border border-red-500/30 hover:border-red-500/60 transition-colors relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500" />
-            <div className="flex items-center gap-2 text-red-400 mb-1">
-              <MapPin className="w-4 h-4" />
-              <span className="text-[11px] font-bold tracking-wider uppercase text-zinc-300">Precinct</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 text-red-400 mb-1">
+              <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-zinc-300">Precinct</span>
             </div>
-            <span className="text-sm font-bold text-white block">286 Fox Street</span>
-            <span className="text-[11px] text-amber-300">Maboneng, Joburg</span>
+            <span className="text-xs sm:text-sm font-bold text-white block truncate">286 Fox Street</span>
+            <span className="text-[10px] sm:text-[11px] text-amber-300">Maboneng, Joburg</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-black/80 backdrop-blur-md border border-amber-500/30 hover:border-amber-500/60 transition-colors relative overflow-hidden">
+          <div className="p-3 sm:p-4 rounded-xl bg-black/80 backdrop-blur-md border border-amber-500/30 hover:border-amber-500/60 transition-colors relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-600 to-amber-400" />
-            <div className="flex items-center gap-2 text-amber-400 mb-1">
-              <Clock className="w-4 h-4" />
-              <span className="text-[11px] font-bold tracking-wider uppercase text-zinc-300">Service</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 text-amber-400 mb-1">
+              <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-zinc-300">Service</span>
             </div>
-            <span className="text-sm font-bold text-white block">08:00 – 23:00</span>
-            <span className="text-[11px] text-amber-300">Open 7 days</span>
+            <span className="text-xs sm:text-sm font-bold text-white block">08:00 – 23:00</span>
+            <span className="text-[10px] sm:text-[11px] text-amber-300">Open 7 days</span>
           </div>
 
         </div>

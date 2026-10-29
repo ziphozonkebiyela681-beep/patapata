@@ -16,17 +16,17 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
       {/* Top thin jazz flame accent line */}
       <div className="h-0.5 w-full bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400" />
 
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-8 px-4 sm:px-6 lg:px-8 h-20">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-8 px-3 sm:px-6 lg:px-8 h-16 sm:h-20">
         
         {/* Zone 1: Pure Isolated Signature Logo (No boxes, pure writing) */}
         <a 
           href="#" 
-          className="flex items-center gap-3 shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg py-1"
+          className="flex items-center gap-2.5 sm:gap-3 shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg py-1"
           aria-label="Pata Pata Home"
         >
           <div className="relative group-hover:scale-105 transition-transform duration-200">
             <PataPataSignature 
-              className="h-10 sm:h-12 w-auto text-white group-hover:text-amber-300 filter drop-shadow-[0_0_10px_rgba(255,107,0,0.4)]" 
+              className="h-8 xs:h-9 sm:h-11 md:h-12 w-auto text-white group-hover:text-amber-300 filter drop-shadow-[0_0_10px_rgba(255,107,0,0.4)]" 
               color="currentColor"
             />
           </div>
@@ -76,7 +76,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
         </nav>
 
         {/* Zone 3: Social Links & Primary Desk Booking CTA */}
-        <div className="flex items-center gap-2.5 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           {/* Social links (Instagram & TikTok) */}
           <div className="hidden lg:flex items-center gap-1.5 border-r border-zinc-800 pr-3 mr-1">
             <a
@@ -107,7 +107,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
 
           <button
             onClick={onOpenBooking}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_18px_rgba(245,158,11,0.4)] whitespace-nowrap"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 xs:px-3 sm:px-4 sm:py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-[11px] sm:text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_18px_rgba(245,158,11,0.4)] whitespace-nowrap"
           >
             <Phone className="w-3.5 h-3.5 fill-black" />
             <span className="hidden sm:inline">Call Desk to Book</span>
