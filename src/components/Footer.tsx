@@ -1,4 +1,5 @@
-import { Phone, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Phone, Sparkles, MapPin, Clock } from 'lucide-react';
 import { PataPataSignature } from './PataPataSignature';
 import { CandleFlame, JazzyPatternRibbon } from './CandlelightVibe';
 import { InstagramIcon, TikTokIcon, SOCIAL_LINKS } from './SocialIcons';
@@ -21,8 +22,8 @@ export function Footer({ onOpenBooking }: FooterProps) {
           
           {/* Brand & Pure Isolated Signature */}
           <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-4">
-              <PataPataSignature className="h-12 w-auto text-white" color="jazz" glow />
+            <Link to="/" className="inline-flex items-center gap-4 group">
+              <PataPataSignature className="h-12 w-auto text-white group-hover:scale-105 transition-transform" color="jazz" glow />
               <div className="flex flex-col border-l border-zinc-800 pl-3">
                 <span className="text-[10px] tracking-[0.25em] uppercase text-amber-400 font-bold">
                   Maboneng · Fox St
@@ -31,7 +32,7 @@ export function Footer({ onOpenBooking }: FooterProps) {
                   Johannesburg
                 </span>
               </div>
-            </div>
+            </Link>
 
             <p className="text-xs text-zinc-300 leading-relaxed max-w-sm">
               Authentic South African heritage dining, 1960s Sophiatown jazz soul, flickering candlelight, and warm hospitality on Fox Street.
@@ -65,26 +66,32 @@ export function Footer({ onOpenBooking }: FooterProps) {
             </div>
           </div>
 
-          {/* Quick Nav */}
+          {/* Quick Nav Multi-Page Links */}
           <div className="md:col-span-3 space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-amber-300 block">
-              Explore
+              Pages
             </span>
             <ul className="space-y-2 text-xs text-zinc-400">
               <li>
-                <a href="#story" className="hover:text-amber-300 transition-colors">Our Story & Heritage</a>
+                <Link to="/" className="hover:text-amber-300 transition-colors block py-0.5">Home Overview</Link>
               </li>
               <li>
-                <a href="#menu" className="hover:text-amber-300 transition-colors">Online Menu & Specials</a>
+                <Link to="/menu" className="hover:text-amber-300 transition-colors block py-0.5">Online Menu & Specials</Link>
               </li>
               <li>
-                <a href="#jazz" className="hover:text-amber-300 transition-colors">Live Jazz Bandstand</a>
+                <Link to="/story" className="hover:text-amber-300 transition-colors block py-0.5">Our Story & Miriam Makeba</Link>
               </li>
               <li>
-                <a href="#reservations" className="hover:text-amber-300 transition-colors">Desk Phone Reservations</a>
+                <Link to="/atmosphere" className="hover:text-amber-300 transition-colors block py-0.5">Inside Atmosphere & Gallery</Link>
               </li>
               <li>
-                <a href="#location" className="hover:text-amber-300 transition-colors">Fox Street Precinct</a>
+                <Link to="/jazz" className="hover:text-amber-300 transition-colors block py-0.5">Live Jazz Bandstand</Link>
+              </li>
+              <li>
+                <Link to="/reservations" className="hover:text-amber-300 transition-colors block py-0.5">Desk Phone Reservations</Link>
+              </li>
+              <li>
+                <Link to="/location" className="hover:text-amber-300 transition-colors block py-0.5">Fox Street Precinct & Hours</Link>
               </li>
             </ul>
           </div>
@@ -106,20 +113,31 @@ export function Footer({ onOpenBooking }: FooterProps) {
               >
                 +27 11 334 0470
               </a>
-              <span className="text-xs text-zinc-400 block">
-                Mobile / WhatsApp: +27 72 268 0313
+              <span className="text-xs text-zinc-400 block flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span>Open 7 Days · 08:00 to 23:00 SAST</span>
               </span>
-              <span className="text-xs text-zinc-400 block">
-                286 Fox Street, Maboneng, JHB 2094
+              <span className="text-xs text-zinc-400 block flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-orange-400 shrink-0" />
+                <span>286 Fox Street, Maboneng, JHB 2094</span>
               </span>
             </div>
 
-            <button
-              onClick={onOpenBooking}
-              className="mt-3 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 transition-all shadow-[0_0_15px_rgba(245,158,11,0.3)]"
-            >
-              Call Desk Reservation
-            </button>
+            <div className="pt-2 flex flex-wrap items-center gap-2">
+              <button
+                onClick={onOpenBooking}
+                className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 transition-all shadow-[0_0_15px_rgba(245,158,11,0.3)]"
+              >
+                Call Desk Reservation
+              </button>
+
+              <Link
+                to="/reservations"
+                className="px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-750 text-xs text-zinc-200 font-bold hover:text-white hover:border-amber-400 transition-colors"
+              >
+                Call Planner
+              </Link>
+            </div>
           </div>
 
         </div>

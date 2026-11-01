@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Phone, ArrowDown, Clock, MapPin, Music } from 'lucide-react';
 import { PataPataSignature } from './PataPataSignature';
 import { CandleFlame, JazzyPatternRibbon } from './CandlelightVibe';
@@ -101,13 +102,13 @@ export function Hero({ onOpenBooking }: HeroProps) {
             <span>Call Desk To Book</span>
           </button>
 
-          <a
-            href="#menu"
+          <Link
+            to="/menu"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-black/75 backdrop-blur-md border border-amber-500/40 text-amber-200 font-bold text-xs sm:text-sm hover:bg-black/90 hover:border-amber-400 hover:text-white transition-all shadow-lg"
           >
             <span>Explore Online Menu</span>
             <ArrowDown className="w-4 h-4 text-orange-400" />
-          </a>
+          </Link>
         </div>
 
         {/* 4-Item Quick Facts Strip with Red/Yellow/Orange Highlights */}

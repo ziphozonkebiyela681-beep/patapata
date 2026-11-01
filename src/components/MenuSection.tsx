@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import { Search, Flame, Plus, Check, X, Phone, Utensils, Sparkles } from 'lucide-react';
+import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
+import { Search, Flame, Plus, Check, X, Phone, Utensils, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { MENU_CATEGORIES, MENU_ITEMS, MenuItem } from '../data/menuData';
 import { CandleFlame, JazzyPatternRibbon } from './CandlelightVibe';
 
@@ -14,6 +14,36 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
   const [selectedDish, setSelectedDish] = useState<MenuItem | null>(null);
   const [wishlist, setWishlist] = useState<MenuItem[]>([]);
   const [showWishlistDrawer, setShowWishlistDrawer] = useState(false);
+
+  // Category horizontal scroll ref and state
+  const categoriesScrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = useCallback(() => {
+    if (categoriesScrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = categoriesScrollRef.current;
+      setCanScrollLeft(scrollLeft > 4);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 6);
+    }
+  }, []);
+
+  const scrollCategories = (direction: 'left' | 'right') => {
+    if (categoriesScrollRef.current) {
+      const scrollDistance = 240;
+      categoriesScrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollDistance : scrollDistance,
+        behavior: 'smooth',
+      });
+      setTimeout(checkScroll, 320);
+    }
+  };
+
+  useEffect(() => {
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, [checkScroll]);
 
   // The 2 authentic kitchen photographs provided by Pata Pata
   const stewDomboloPhotoUrl = '/assets/aistudio/WhatsApp_Image_2026-10-27_at_3.53.36_PM__1__48d9f749.jpg';
@@ -199,25 +229,72 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
           </div>
         </div>
 
-        {/* Category Navigation Tabs */}
+        {/* Category Navigation Tabs with Forward and Back Scrolling Arrows */}
         {!searchQuery && (
-          <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-8 border-b border-zinc-800 scrollbar-none">
-            {MENU_CATEGORIES.map((cat) => {
-              const isActive = activeCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide whitespace-nowrap transition-all ${
-                    isActive
-                      ? 'bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-black shadow-lg shadow-orange-950/50 scale-[1.02]'
-                      : 'bg-zinc-950 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-zinc-900'
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              );
-            })}
+          <div className="relative mb-8">
+            <div className="flex items-center gap-1.5 sm:gap-2 pb-3 border-b border-zinc-800">
+              
+              {/* Scroll Back Arrow Button */}
+              <button
+                type="button"
+                onClick={() => scrollCategories('left')}
+                disabled={!canScrollLeft}
+                className={`p-2 sm:p-2.5 rounded-xl border transition-all shrink-0 flex items-center justify-center min-h-[44px] min-w-[44px] ${
+                  canScrollLeft
+                    ? 'bg-zinc-900 border-amber-500/50 text-amber-300 hover:text-white hover:bg-zinc-850 hover:border-amber-400 active:scale-95 shadow-md shadow-orange-950/20'
+                    : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-600 cursor-not-allowed opacity-40'
+                }`}
+                aria-label="Scroll categories back"
+                title="Scroll categories back"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              {/* Scrollable Categories Row Container */}
+              <div
+                ref={categoriesScrollRef}
+                onScroll={checkScroll}
+                className="flex-1 flex items-center gap-2 overflow-x-auto py-1 scroll-smooth scrollbar-none"
+              >
+                {MENU_CATEGORIES.map((cat) => {
+                  const isActive = activeCategory === cat.id;
+                  return (
+                    <button
+                      key={cat.id}
+                      onClick={(e) => {
+                        setActiveCategory(cat.id);
+                        e.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        setTimeout(checkScroll, 300);
+                      }}
+                      className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide whitespace-nowrap transition-all shrink-0 min-h-[44px] ${
+                        isActive
+                          ? 'bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-black shadow-lg shadow-orange-950/50 scale-[1.02]'
+                          : 'bg-zinc-950 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-zinc-850 hover:border-amber-500/40'
+                      }`}
+                    >
+                      {cat.label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Scroll Forward Arrow Button */}
+              <button
+                type="button"
+                onClick={() => scrollCategories('right')}
+                disabled={!canScrollRight}
+                className={`p-2 sm:p-2.5 rounded-xl border transition-all shrink-0 flex items-center justify-center min-h-[44px] min-w-[44px] ${
+                  canScrollRight
+                    ? 'bg-zinc-900 border-amber-500/50 text-amber-300 hover:text-white hover:bg-zinc-850 hover:border-amber-400 active:scale-95 shadow-md shadow-orange-950/20'
+                    : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-600 cursor-not-allowed opacity-40'
+                }`}
+                aria-label="Scroll categories forward"
+                title="Scroll categories forward"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+
+            </div>
           </div>
         )}
 

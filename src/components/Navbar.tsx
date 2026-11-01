@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Phone, Menu, X } from 'lucide-react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Phone, Menu, X, Utensils, Music, BookOpen, Compass, Sparkles, MapPin } from 'lucide-react';
 import { PataPataSignature } from './PataPataSignature';
 import { CandleFlame } from './CandlelightVibe';
 import { InstagramIcon, TikTokIcon, SOCIAL_LINKS } from './SocialIcons';
@@ -10,6 +11,16 @@ interface NavbarProps {
 
 export function Navbar({ onOpenBooking }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const navLinks = [
+    { to: '/', label: 'Home' },
+    { to: '/menu', label: 'Online Menu' },
+    { to: '/story', label: 'Our Story' },
+    { to: '/atmosphere', label: 'Atmosphere' },
+    { to: '/jazz', label: 'Live Jazz' },
+    { to: '/location', label: 'Location' },
+  ];
 
   return (
     <header className="sticky top-0 z-40 w-full bg-black/90 backdrop-blur-md border-b border-amber-950/40 transition-colors">
@@ -18,9 +29,9 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
 
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-8 px-3 sm:px-6 lg:px-8 h-16 sm:h-20">
         
-        {/* Zone 1: Pure Isolated Signature Logo (No boxes, pure writing) */}
-        <a 
-          href="#" 
+        {/* Zone 1: Pure Isolated Signature Logo */}
+        <Link 
+          to="/" 
           className="flex items-center gap-2.5 sm:gap-3 shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg py-1"
           aria-label="Pata Pata Home"
         >
@@ -39,46 +50,35 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
               Jazz & Heritage Dining
             </span>
           </div>
-        </a>
+        </Link>
 
-        {/* Zone 2: 4–5 single-line clean text links with warm hover underlines */}
-        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-300">
-          <a
-            href="#atmosphere"
-            className="hover:text-amber-400 transition-colors whitespace-nowrap underline-offset-8 hover:underline decoration-amber-400"
-          >
-            Atmosphere
-          </a>
-          <a
-            href="#story"
-            className="hover:text-amber-400 transition-colors whitespace-nowrap underline-offset-8 hover:underline decoration-orange-500"
-          >
-            Our Story
-          </a>
-          <a
-            href="#menu"
-            className="hover:text-amber-400 transition-colors whitespace-nowrap underline-offset-8 hover:underline decoration-yellow-400"
-          >
-            Online Menu
-          </a>
-          <a
-            href="#jazz"
-            className="hover:text-amber-400 transition-colors whitespace-nowrap underline-offset-8 hover:underline decoration-red-500"
-          >
-            Live Jazz
-          </a>
-          <a
-            href="#reservations"
-            className="hover:text-amber-400 transition-colors whitespace-nowrap underline-offset-8 hover:underline decoration-orange-500"
-          >
-            Desk Booking
-          </a>
+        {/* Zone 2: 4–6 single-line clean text links with warm hover / active underlines */}
+        <nav className="hidden md:flex items-center gap-6 lg:gap-7 text-sm font-medium">
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.to;
+            return (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={`whitespace-nowrap transition-colors py-1 relative ${
+                  isActive 
+                    ? 'text-amber-400 font-bold' 
+                    : 'text-zinc-300 hover:text-amber-400'
+                }`}
+              >
+                {link.label}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full shadow-[0_0_8px_#f59e0b]" />
+                )}
+              </NavLink>
+            );
+          })}
         </nav>
 
         {/* Zone 3: Social Links & Primary Desk Booking CTA */}
         <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           {/* Social links (Instagram & TikTok) */}
-          <div className="hidden lg:flex items-center gap-1.5 border-r border-zinc-800 pr-3 mr-1">
+          <div className="hidden xl:flex items-center gap-1.5 border-r border-zinc-800 pr-3 mr-1">
             <a
               href={SOCIAL_LINKS.instagram}
               target="_blank"
@@ -101,7 +101,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
             </a>
           </div>
 
-          <div className="hidden xl:flex items-center">
+          <div className="hidden 2xl:flex items-center">
             <CandleFlame className="scale-75" />
           </div>
 
@@ -127,64 +127,109 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
 
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-amber-950 bg-black/95 px-6 py-6 space-y-4">
-          <nav className="flex flex-col gap-3 text-sm font-medium">
-            <a
-              href="#story"
+        <div className="md:hidden border-b border-amber-950 bg-black/95 px-5 py-6 space-y-4">
+          <nav className="flex flex-col gap-2 text-sm font-medium">
+            <Link
+              to="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-zinc-200 hover:text-amber-400 py-1"
+              className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
+                location.pathname === '/' 
+                  ? 'bg-amber-400/10 text-amber-400 font-bold border border-amber-500/30' 
+                  : 'text-zinc-200 hover:text-amber-400'
+              }`}
             >
-              Our Story
-            </a>
-            <a
-              href="#menu"
+              <Sparkles className="w-4 h-4 text-orange-400" />
+              <span>Home Overview</span>
+            </Link>
+
+            <Link
+              to="/menu"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-zinc-200 hover:text-amber-400 py-1"
+              className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
+                location.pathname === '/menu' 
+                  ? 'bg-amber-400/10 text-amber-400 font-bold border border-amber-500/30' 
+                  : 'text-zinc-200 hover:text-amber-400'
+              }`}
             >
-              Online Menu
-            </a>
-            <a
-              href="#jazz"
+              <Utensils className="w-4 h-4 text-yellow-400" />
+              <span>Online Menu & Specials</span>
+            </Link>
+
+            <Link
+              to="/story"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-zinc-200 hover:text-amber-400 py-1"
+              className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
+                location.pathname === '/story' 
+                  ? 'bg-amber-400/10 text-amber-400 font-bold border border-amber-500/30' 
+                  : 'text-zinc-200 hover:text-amber-400'
+              }`}
             >
-              Live Jazz Lineup
-            </a>
-            <a
-              href="#reservations"
+              <BookOpen className="w-4 h-4 text-amber-400" />
+              <span>Our Story & Miriam Makeba</span>
+            </Link>
+
+            <Link
+              to="/atmosphere"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-zinc-200 hover:text-amber-400 py-1"
+              className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
+                location.pathname === '/atmosphere' 
+                  ? 'bg-amber-400/10 text-amber-400 font-bold border border-amber-500/30' 
+                  : 'text-zinc-200 hover:text-amber-400'
+              }`}
             >
-              Desk Reservation
-            </a>
-            <a
-              href="#location"
+              <Compass className="w-4 h-4 text-red-400" />
+              <span>Inside Atmosphere & Fox St Gallery</span>
+            </Link>
+
+            <Link
+              to="/jazz"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-zinc-200 hover:text-amber-400 py-1"
+              className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
+                location.pathname === '/jazz' 
+                  ? 'bg-amber-400/10 text-amber-400 font-bold border border-amber-500/30' 
+                  : 'text-zinc-200 hover:text-amber-400'
+              }`}
             >
-              Location & Hours
-            </a>
+              <Music className="w-4 h-4 text-orange-400" />
+              <span>Weekend Live Jazz Bandstand</span>
+            </Link>
+
+            <Link
+              to="/location"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
+                location.pathname === '/location' 
+                  ? 'bg-amber-400/10 text-amber-400 font-bold border border-amber-500/30' 
+                  : 'text-zinc-200 hover:text-amber-400'
+              }`}
+            >
+              <MapPin className="w-4 h-4 text-amber-300" />
+              <span>286 Fox Street Location & Hours</span>
+            </Link>
           </nav>
 
           <div className="pt-4 border-t border-zinc-900 flex flex-col gap-3">
-            <a
-              href="tel:+27113340470"
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider"
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenBooking();
+              }}
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider shadow-md"
             >
               <Phone className="w-4 h-4 fill-black" />
-              <span>Direct Dial Desk: +27 11 334 0470</span>
-            </a>
+              <span>Call Frontline Desk (+27 11 334 0470)</span>
+            </button>
 
-            <div className="flex items-center justify-center gap-3 pt-2">
+            <div className="flex items-center justify-center gap-3 pt-1">
               <a
                 href={SOCIAL_LINKS.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-3 py-2 rounded-lg bg-zinc-900 border border-amber-500/30 text-amber-300 text-xs font-medium"
               >
-                <InstagramIcon className="w-4 h-4 text-orange-400" />
+                <InstagramIcon className="w-3.5 h-3.5 text-orange-400" />
                 <span>Instagram @pata.pata_maboneng</span>
               </a>
               <a
@@ -193,7 +238,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-3 py-2 rounded-lg bg-zinc-900 border border-amber-500/30 text-amber-300 text-xs font-medium"
               >
-                <TikTokIcon className="w-4 h-4 text-yellow-400" />
+                <TikTokIcon className="w-3.5 h-3.5 text-yellow-400" />
                 <span>TikTok</span>
               </a>
             </div>
