@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Utensils, Music, BookOpen, Compass, MapPin, Phone, Flame, Sparkles } from 'lucide-react';
+import { ArrowRight, Utensils, Music, BookOpen, Compass, MapPin, Phone } from 'lucide-react';
 import { Hero } from '../components/Hero';
 import { FamilySection } from '../components/FamilySection';
-import { CandleFlame, JazzyPatternRibbon } from '../components/CandlelightVibe';
+import { SaxophoneSilhouette, DancingCoupleSilhouette } from '../components/JazzSketches';
+import { VinylRecordBadge, VintageStampBadge } from '../components/VintageAccents';
 
 interface HomePageProps {
   onOpenBooking: () => void;
@@ -37,123 +38,123 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
   ];
 
   return (
-    <div className="space-y-6">
-      {/* 1. Hero with Potjie Dining Room Background and Pure Signature Logotype */}
+    <div className="bg-white text-stone-900">
+      {/* 1. Clean, Humble Hero */}
       <Hero onOpenBooking={onOpenBooking} />
 
-      {/* 2. Multi-Page Exploration Quick Hub */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="p-4 sm:p-6 rounded-2xl bg-zinc-950/80 border border-amber-500/30 backdrop-blur-md shadow-xl">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
-            <div className="flex items-center gap-2">
-              <CandleFlame className="scale-65" />
-              <span className="text-xs uppercase font-extrabold tracking-widest text-amber-400">
-                Explore Pata Pata Multi-Page Experience
-              </span>
+      {/* 2. Simple Page Navigation Hub */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-stone-200">
+            <div>
+              <h2 className="text-lg font-bold text-stone-950">Explore Pata Pata</h2>
+              <p className="text-xs text-stone-600">Everything you need to know about our Fox Street restaurant</p>
             </div>
-            <span className="text-xs text-zinc-400 font-mono">
-              286 Fox Street · Maboneng, Johannesburg
+            <span className="text-xs text-stone-500 font-mono">
+              286 Fox St · Maboneng, Johannesburg
             </span>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             <Link
               to="/menu"
-              className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 hover:border-amber-400 hover:bg-zinc-850 transition-all flex flex-col justify-between group"
+              className="p-4 rounded-xl bg-white border border-stone-200 hover:border-black transition-colors flex flex-col justify-between group shadow-2xs"
             >
-              <div className="flex items-center justify-between text-yellow-400 mb-2">
-                <Utensils className="w-4 h-4" />
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <div className="flex items-center justify-between text-stone-900 mb-3">
+                <Utensils className="w-4 h-4 text-stone-700" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-stone-400" />
               </div>
               <div>
-                <span className="text-xs font-bold text-white block">Online Menu</span>
-                <span className="text-[10px] text-zinc-400">Mogodu, potjies & braai</span>
+                <span className="text-sm font-bold text-stone-950 block">Menu</span>
+                <span className="text-xs text-stone-500">Mogodu, potjies & braai</span>
               </div>
             </Link>
 
             <Link
               to="/story"
-              className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 hover:border-amber-400 hover:bg-zinc-850 transition-all flex flex-col justify-between group"
+              className="p-4 rounded-xl bg-white border border-stone-200 hover:border-black transition-colors flex flex-col justify-between group shadow-2xs"
             >
-              <div className="flex items-center justify-between text-amber-400 mb-2">
-                <BookOpen className="w-4 h-4" />
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <div className="flex items-center justify-between text-stone-900 mb-3">
+                <BookOpen className="w-4 h-4 text-stone-700" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-stone-400" />
               </div>
               <div>
-                <span className="text-xs font-bold text-white block">Our Story</span>
-                <span className="text-[10px] text-zinc-400">1967 Makeba heritage</span>
+                <span className="text-sm font-bold text-stone-950 block">Our Story</span>
+                <span className="text-xs text-stone-500">1960s Makeba heritage</span>
               </div>
             </Link>
 
             <Link
               to="/atmosphere"
-              className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 hover:border-amber-400 hover:bg-zinc-850 transition-all flex flex-col justify-between group"
+              className="p-4 rounded-xl bg-white border border-stone-200 hover:border-black transition-colors flex flex-col justify-between group shadow-2xs"
             >
-              <div className="flex items-center justify-between text-orange-400 mb-2">
-                <Compass className="w-4 h-4" />
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <div className="flex items-center justify-between text-stone-900 mb-3">
+                <Compass className="w-4 h-4 text-stone-700" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-stone-400" />
               </div>
               <div>
-                <span className="text-xs font-bold text-white block">Atmosphere</span>
-                <span className="text-[10px] text-zinc-400">Candlelight & photos</span>
+                <span className="text-sm font-bold text-stone-950 block">Atmosphere</span>
+                <span className="text-xs text-stone-500">Spaces & photography</span>
               </div>
             </Link>
 
             <Link
               to="/jazz"
-              className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 hover:border-amber-400 hover:bg-zinc-850 transition-all flex flex-col justify-between group"
+              className="p-4 rounded-xl bg-white border border-stone-200 hover:border-black transition-colors flex flex-col justify-between group shadow-2xs"
             >
-              <div className="flex items-center justify-between text-red-400 mb-2">
-                <Music className="w-4 h-4" />
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <div className="flex items-center justify-between text-stone-900 mb-3">
+                <Music className="w-4 h-4 text-stone-700" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-stone-400" />
               </div>
               <div>
-                <span className="text-xs font-bold text-white block">Live Jazz</span>
-                <span className="text-[10px] text-zinc-400">Weekend resident sets</span>
+                <span className="text-sm font-bold text-stone-950 block">Live Jazz</span>
+                <span className="text-xs text-stone-500">Weekend performance sets</span>
               </div>
             </Link>
 
             <Link
               to="/location"
-              className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 hover:border-amber-400 hover:bg-zinc-850 transition-all flex flex-col justify-between group col-span-2 sm:col-span-1"
+              className="p-4 rounded-xl bg-white border border-stone-200 hover:border-black transition-colors flex flex-col justify-between group shadow-2xs col-span-2 sm:col-span-1"
             >
-              <div className="flex items-center justify-between text-amber-300 mb-2">
-                <MapPin className="w-4 h-4" />
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <div className="flex items-center justify-between text-stone-900 mb-3">
+                <MapPin className="w-4 h-4 text-stone-700" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-stone-400" />
               </div>
               <div>
-                <span className="text-xs font-bold text-white block">Fox Street Hub</span>
-                <span className="text-[10px] text-zinc-400">Hours & neighborhood</span>
+                <span className="text-sm font-bold text-stone-950 block">Visit Us</span>
+                <span className="text-xs text-stone-500">Hours, map & contacts</span>
               </div>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 3. The Pata Pata Family (Head Chef & Servers Dedicated to Best Experience) */}
+      {/* 3. The Pata Pata Family (Head Chef & Servers) */}
       <FamilySection />
 
-      {/* 4. Featured Menu Snippet with Link to Dedicated Menu Page */}
-      <section className="relative py-16 bg-transparent text-white border-t border-amber-950/40">
+      {/* 4. Featured Menu Snippet */}
+      <section className="py-14 border-t border-stone-200 bg-stone-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs uppercase font-extrabold tracking-widest text-amber-400 mb-2">
-                <Utensils className="w-3.5 h-3.5 text-yellow-400" />
-                <span>Culinary Signatures</span>
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-stone-500 block">
+                  Traditional Kitchen
+                </span>
+                <VintageStampBadge text="EST. 1960s SOPHIATOWN RECIPES" />
               </div>
-              <h2 className="text-2xl sm:text-4xl font-black font-display text-white">
-                Taste of Sophiatown
+              <h2 className="text-2xl sm:text-3xl font-black font-display text-stone-950">
+                Signature South African Dishes
               </h2>
             </div>
             
             <Link
               to="/menu"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-300 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-900 hover:underline"
             >
-              <span>Explore All 24+ Menu Dishes</span>
-              <ArrowRight className="w-4 h-4 text-orange-400" />
+              <span>Explore Complete Menu</span>
+              <ArrowRight className="w-4 h-4 text-stone-600" />
             </Link>
           </div>
 
@@ -161,33 +162,33 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
             {featuredDishes.map((dish, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-2xl bg-zinc-950/90 border border-zinc-850 hover:border-amber-500/40 transition-colors flex flex-col justify-between group"
+                className="p-5 rounded-xl bg-white border border-stone-200 hover:border-stone-400 transition-colors flex flex-col justify-between shadow-2xs"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/30">
+                    <span className="text-[11px] uppercase font-bold tracking-wider text-stone-700 bg-stone-100 px-2 py-0.5 rounded">
                       {dish.tag}
                     </span>
-                    <span className="text-base font-black font-display text-amber-300 tabular-nums">
+                    <span className="text-base font-bold text-stone-950 tabular-nums">
                       {dish.price}
                     </span>
                   </div>
-                  <h3 className="text-base font-bold font-display text-white group-hover:text-amber-300 transition-colors mb-2">
+                  <h3 className="text-base font-bold text-stone-950 mb-1.5">
                     {dish.name}
                   </h3>
-                  <p className="text-xs text-zinc-300 leading-relaxed mb-4">
+                  <p className="text-xs text-stone-600 leading-relaxed mb-4">
                     {dish.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-zinc-900 flex items-center justify-between text-xs">
-                  <span className="text-[11px] text-zinc-400 font-mono">286 Fox St Pass</span>
+                <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
+                  <span className="text-stone-500 font-mono">Traditional</span>
                   <Link
                     to="/menu"
-                    className="text-amber-400 hover:underline font-bold text-[11px] flex items-center gap-1"
+                    className="text-stone-900 hover:underline font-semibold flex items-center gap-1"
                   >
-                    <span>View Menu</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <span>View</span>
+                    <ArrowRight className="w-3 h-3 text-stone-500" />
                   </Link>
                 </div>
               </div>
@@ -197,9 +198,9 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
           <div className="text-center">
             <Link
               to="/menu"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 transition-all shadow-lg"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-black text-white font-semibold text-xs sm:text-sm hover:bg-stone-800 transition-colors shadow-sm"
             >
-              <Utensils className="w-4 h-4 fill-black" />
+              <Utensils className="w-4 h-4" />
               <span>Open Online Menu Page</span>
             </Link>
           </div>
@@ -207,56 +208,60 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
         </div>
       </section>
 
-      {/* 5. Live Jazz Spotlight Teaser */}
-      <section className="relative py-16 bg-transparent text-white border-t border-amber-950/40">
+      {/* 5. Live Jazz Spotlight */}
+      <section className="py-14 border-t border-stone-200 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-6 sm:p-10 rounded-3xl bg-zinc-950/90 border border-amber-500/40 relative overflow-hidden shadow-2xl">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400" />
-            
+          <div className="p-6 sm:p-8 rounded-2xl bg-stone-50 border border-stone-200">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
               <div className="max-w-xl">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black border border-amber-500/30 text-xs font-bold uppercase tracking-widest text-amber-400 mb-3">
-                  <Music className="w-3.5 h-3.5 text-red-500" />
-                  <span>Weekend Residency</span>
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-200 text-xs font-semibold uppercase tracking-wider text-stone-800">
+                    <Music className="w-3.5 h-3.5 text-stone-900" />
+                    <span>Weekend Jazz Residency</span>
+                  </div>
+                  <VinylRecordBadge label="45 RPM SOUL" sublabel="KWELA &amp; SWING" />
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black font-display text-white mb-3">
-                  Live Afro-Jazz Right by the Fox Street Window
-                </h2>
-                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-6">
-                  Experience our house quartet—tenor saxophone, keys, upright bass, and drums—filling Fox Street with marabi warmth every Friday, Saturday, and Sunday.
+                <div className="flex items-start justify-between gap-3">
+                  <h2 className="text-2xl sm:text-3xl font-black font-display text-stone-950 mb-3">
+                    Live Afro-Jazz Right by Fox Street
+                  </h2>
+                  <DancingCoupleSilhouette className="w-12 h-12 text-stone-900 opacity-60 hidden sm:block shrink-0" />
+                </div>
+                <p className="text-sm text-stone-600 leading-relaxed mb-6 font-serif italic">
+                  Experience our house quartet—tenor saxophone, keys, upright bass, and drums—filling Fox Street with marabi warmth every Friday, Saturday, and Sunday evening.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-3">
                   <Link
                     to="/jazz"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 transition-all shadow-md"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-black text-white font-semibold text-xs uppercase tracking-wider hover:bg-stone-800 transition-colors"
                   >
-                    <span>View Weekend Jazz Lineup</span>
+                    <span>View Jazz Lineup</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
 
                   <button
                     onClick={onOpenBooking}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-black border border-amber-500/40 text-amber-200 font-bold text-xs hover:text-white transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white border border-stone-300 text-stone-900 font-semibold text-xs hover:bg-stone-100 transition-colors"
                   >
-                    <Phone className="w-3.5 h-3.5 fill-current" />
-                    <span>Hold Stage Table</span>
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>Reserve a Table</span>
                   </button>
                 </div>
               </div>
 
-              {/* Band Preview Card */}
-              <div className="w-full lg:w-80 rounded-2xl overflow-hidden border border-amber-500/30 bg-black shadow-xl shrink-0">
+              {/* Band Photo Card */}
+              <div className="w-full lg:w-80 rounded-xl overflow-hidden border border-stone-200 bg-white shadow-sm shrink-0">
                 <div className="aspect-[4/3] w-full overflow-hidden">
                   <img
                     src="/assets/aistudio/WhatsApp_Image_2026-10-27_at_12.36.43_PM_55c5dbcc.jpeg"
                     alt="Pata Pata live jazz bandstand"
-                    className="w-full h-full object-cover filter contrast-[1.05]"
+                    className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-3.5 text-xs text-center">
-                  <span className="font-bold text-amber-400 block">The Resident Quartet</span>
-                  <span className="text-[11px] text-zinc-400">Performing Fri & Sat 19:30 · Sun 14:00</span>
+                <div className="p-3 text-xs text-center border-t border-stone-100">
+                  <span className="font-bold text-stone-950 block">The Resident Quartet</span>
+                  <span className="text-stone-500">Performing Fri & Sat 19:30 · Sun 14:00</span>
                 </div>
               </div>
             </div>
@@ -264,35 +269,32 @@ export function HomePage({ onOpenBooking }: HomePageProps) {
         </div>
       </section>
 
-      {/* 6. Desk Call & Reservations Teaser Banner */}
-      <section className="relative py-12 bg-transparent text-white border-t border-amber-950/40">
+      {/* 6. Desk Call & Reservations Banner */}
+      <section className="py-12 border-t border-stone-200 bg-stone-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="p-6 sm:p-8 rounded-2xl bg-zinc-950/90 border border-amber-500/30">
-            <CandleFlame className="scale-75 mb-3" />
-            <h3 className="text-xl sm:text-2xl font-bold font-display text-white mb-2">
-              Ready for a Candlelit Evening at Pata Pata?
-            </h3>
-            <p className="text-xs sm:text-sm text-zinc-300 max-w-md mx-auto mb-6">
-              Call our front desk host directly at <strong className="text-white">+27 11 334 0470</strong> or browse our dedicated pages.
-            </p>
+          <h3 className="text-xl sm:text-2xl font-bold font-display text-stone-950 mb-2">
+            Ready to Join Us at Pata Pata?
+          </h3>
+          <p className="text-sm text-stone-600 max-w-md mx-auto mb-6">
+            Call our front desk host directly at <strong className="text-stone-950">+27 11 334 0470</strong> to reserve your spot, or walk in any time.
+          </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <button
-                onClick={onOpenBooking}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 transition-all shadow-md"
-              >
-                <Phone className="w-4 h-4 fill-black" />
-                <span>Call Desk (+27 11 334 0470)</span>
-              </button>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="tel:+27113340470"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-black text-white font-semibold text-xs sm:text-sm hover:bg-stone-800 transition-colors shadow-sm"
+            >
+              <Phone className="w-4 h-4" />
+              <span>Call Desk: +27 11 334 0470</span>
+            </a>
 
-              <Link
-                to="/reservations"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-zinc-900 border border-zinc-700 text-white font-bold text-xs hover:border-amber-400 transition-colors"
-              >
-                <span>Desk Booking Planner</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+            <Link
+              to="/reservations"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white border border-stone-300 text-stone-900 font-semibold text-xs sm:text-sm hover:bg-stone-100 transition-colors"
+            >
+              <span>Desk Booking Planner</span>
+              <ArrowRight className="w-3.5 h-3.5 text-stone-500" />
+            </Link>
           </div>
         </div>
       </section>

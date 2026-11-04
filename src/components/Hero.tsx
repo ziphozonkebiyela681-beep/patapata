@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Phone, ArrowDown, Clock, MapPin, Music } from 'lucide-react';
-import { PataPataSignature } from './PataPataSignature';
-import { CandleFlame, JazzyPatternRibbon } from './CandlelightVibe';
+import { Phone, ArrowRight, Clock, MapPin, Music } from 'lucide-react';
+import { SaxophoneSilhouette, DancingCoupleSilhouette, VINTAGE_SAX_SKETCH, VINTAGE_DANCERS_SKETCH } from './JazzSketches';
+import { VintageDoubleRule } from './VintageAccents';
+import { AfricanContinentSeal, AfricanGeometricDivider, AfricanContinentSVG } from './AfricanMotifs';
+import { VintagePhotoFrame } from './VintagePhotoFrame';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -9,149 +11,205 @@ interface HeroProps {
 
 export function Hero({ onOpenBooking }: HeroProps) {
   const heroBgUrl = '/assets/aistudio/WhatsApp_Image_2026-10-27_at_2.02.19_PM_0a091eb0.jpg';
+  const logoUrl = '/assets/aistudio/WhatsApp_Image_2026-11-04_at_3.44.31_AM_78ac61fd.jpg';
 
   return (
-    <section className="relative min-h-[94vh] flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 pt-20 pb-16 overflow-hidden bg-black text-white">
-      
-      {/* AUTHENTIC PATA PATA POTJIE & DINING ROOM BACKGROUND SPACE PICTURE */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <img
-          src={heroBgUrl}
-          alt="Pata Pata traditional potjie pot on polished timber dining table with warm ambient lamps"
-          referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-center filter brightness-[0.72] contrast-[1.08] scale-105"
-        />
+    <section className="bg-white text-stone-900 pt-8 sm:pt-12 pb-14 sm:pb-20 border-b border-stone-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Atmospheric Scrim Overlays: lets the potjie pot, warm woven drum lights & Ubuntu sign shine through while ensuring 100% crisp text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/55 to-black/95" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-transparent to-black/85" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-      </div>
-
-      {/* Warm Red, Yellow & Orange Candlelight Backlight Glow */}
-      <div 
-        aria-hidden="true" 
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[480px] bg-gradient-to-r from-red-600/20 via-orange-500/25 to-amber-400/20 rounded-full blur-[140px] pointer-events-none z-1" 
-      />
-
-      {/* Floating Candlelight Sparkle & Stardust Accents */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none z-1">
-        <span className="absolute top-[16%] left-[12%] w-1.5 h-1.5 bg-[#f59e0b] rounded-full animate-sparkle shadow-[0_0_12px_#f59e0b]" />
-        <span className="absolute top-[24%] right-[14%] w-2 h-2 bg-[#ef4444] rounded-full animate-sparkle [animation-delay:1.2s] shadow-[0_0_14px_#ef4444]" />
-        <span className="absolute bottom-[32%] left-[18%] w-1.5 h-1.5 bg-[#ff6b00] rounded-full animate-sparkle [animation-delay:2s] shadow-[0_0_12px_#ff6b00]" />
-        <span className="absolute bottom-[24%] right-[20%] w-1 h-1 bg-[#fde047] rounded-full animate-sparkle [animation-delay:0.8s] shadow-[0_0_10px_#fde047]" />
-      </div>
-
-      <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
-        
-        {/* District Kicker with Candlelight Flame & Warm Accent */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-amber-500/40 text-xs text-zinc-200 font-medium mb-7 shadow-[0_0_20px_rgba(245,158,11,0.25)]">
-          <CandleFlame className="-my-1" />
-          <span className="text-amber-400 font-bold">Fox Street Jazz & Soul</span>
-          <span className="text-zinc-600">·</span>
-          <span className="text-zinc-300">Maboneng, Johannesburg</span>
-        </div>
-
-        {/* ISOLATED SIGNATURE LOGOTYPE (NO BOX, NO BORDER, PURE WRITING ONLY) */}
-        <div className="mb-5 sm:mb-7 relative flex flex-col items-center">
-          {/* Subtle warm amber/red starlight behind the signature writing */}
-          <div 
-            aria-hidden="true" 
-            className="absolute -inset-6 bg-gradient-to-r from-red-500/25 via-orange-500/35 to-amber-400/25 blur-2xl opacity-80 pointer-events-none" 
-          />
+        {/* Centered Humble Brand Header with Jazzy Flanking Silhouettes */}
+        <div className="relative text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           
-          <div className="relative group cursor-default">
-            <PataPataSignature 
-              className="w-auto h-20 xs:h-24 sm:h-32 md:h-40 lg:h-44 text-white hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_30px_rgba(255,107,0,0.65)]"
-              color="jazz"
-              glow
+          {/* Subtle Vintage Silhouettes flanking the top banner on md+ screens */}
+          <div className="hidden md:flex absolute -left-12 lg:-left-20 top-4 flex-col items-center gap-1 opacity-75 hover:opacity-100 transition-opacity">
+            <SaxophoneSilhouette className="w-16 h-20 text-stone-900" />
+            <span className="text-[9px] font-mono uppercase tracking-widest text-stone-500">Marabi Horn</span>
+          </div>
+
+          <div className="hidden md:flex absolute -right-12 lg:-right-20 top-4 flex-col items-center gap-1 opacity-75 hover:opacity-100 transition-opacity">
+            <DancingCoupleSilhouette className="w-18 h-20 text-stone-900" />
+            <span className="text-[9px] font-mono uppercase tracking-widest text-stone-500">Touch Dance</span>
+          </div>
+
+          {/* Official Provided Logo Image */}
+          <div className="flex justify-center mb-5">
+            <img
+              src={logoUrl}
+              alt="PATA PATA - SA Cuisine • Bar • Live Music"
+              className="h-16 xs:h-20 sm:h-24 md:h-28 w-auto object-contain"
+              loading="eager"
             />
           </div>
 
-          <div className="mt-2.5 sm:mt-3 flex items-center gap-1.5 sm:gap-2 text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.3em] text-amber-400 font-extrabold drop-shadow">
-            <span className="text-red-500">Touch</span>
-            <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
-            <span className="text-orange-400">Touch</span>
-            <span className="w-1.5 h-1.5 bg-red-500 rounded-full" />
-            <span className="text-amber-300">1960s Sophiatown Beat</span>
+          {/* African Continent Seal & Vintage Soul Badge */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
+            <AfricanContinentSeal />
+          </div>
+
+          {/* Mobile dancing silhouettes strip */}
+          <div className="flex md:hidden items-center justify-center gap-6 mb-4 opacity-75">
+            <SaxophoneSilhouette className="w-10 h-12 text-stone-900" />
+            <AfricanContinentSVG className="w-9 h-9 text-stone-900" showJoburgStar={true} />
+            <DancingCoupleSilhouette className="w-11 h-12 text-stone-900" />
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 border border-stone-200 text-xs text-stone-700 font-medium">
+              <MapPin className="w-3.5 h-3.5 text-stone-900" />
+              <span>286 Fox Street, Maboneng, Johannesburg</span>
+            </div>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 border border-dashed border-stone-400 rounded text-[10px] font-typewriter uppercase tracking-widest text-stone-700 bg-stone-50/90 -rotate-1 shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-stone-900" />
+              <span>REC. 1967 • SOPHIATOWN SOUL</span>
+            </span>
+          </div>
+
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl font-black font-display tracking-tight text-stone-950 leading-tight mb-4 text-balance">
+            Honest South African cooking, warm hospitality, and live weekend jazz.
+          </h1>
+
+          <p className="text-base sm:text-lg text-stone-600 leading-relaxed max-w-2xl mx-auto mb-8 font-normal font-serif italic">
+            Named in honor of Miriam Makeba&apos;s timeless rhythm. Slow-simmered cast-iron potjies, rich mogodu, peri-peri chicken, and friendly neighborhood vibes in the heart of Maboneng.
+          </p>
+
+          {/* Humble Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto mb-8">
+            <button
+              onClick={onOpenBooking}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg bg-black text-white font-semibold text-sm hover:bg-stone-800 transition-colors shadow-sm"
+            >
+              <Phone className="w-4 h-4" />
+              <span>Call Desk to Book: +27 11 334 0470</span>
+            </button>
+
+            <Link
+              to="/menu"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-stone-100 border border-stone-300 text-stone-900 font-semibold text-sm hover:bg-stone-200 transition-colors"
+            >
+              <span>View Food Menu</span>
+              <ArrowRight className="w-4 h-4 text-stone-600" />
+            </Link>
           </div>
         </div>
 
-        {/* Jazzy Geometric Chevron Ribbon */}
-        <div className="w-full max-w-md my-2 sm:my-3">
-          <JazzyPatternRibbon />
+        {/* 1960s African Heritage Geometric Divider */}
+        <div className="max-w-2xl mx-auto mb-8">
+          <AfricanGeometricDivider />
         </div>
 
-        {/* Editorial Headline with warm fiery accents */}
-        <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-display tracking-tight text-white max-w-3xl leading-[1.12] sm:leading-[1.08] mb-3 sm:mb-5 text-balance drop-shadow-[0_3px_15px_rgba(0,0,0,0.9)]">
-          The Beating Heart of Fox Street. Where <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">Candlelit Afro-Jazz</span> Meets Heritage Soul.
-        </h1>
-
-        {/* Subtitle */}
-        <p className="text-xs xs:text-sm sm:text-base md:text-lg text-zinc-200 max-w-2xl leading-relaxed mb-6 sm:mb-9 font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-          Honoring Miriam Makeba&apos;s timeless rhythm. Slow-simmered rich Mogodu, cast-iron oxtail potjies, sizzling peri-peri grills, and warm candlelight over Fox Street every evening.
-        </p>
-
-        {/* Main CTA Cluster */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto mb-10 sm:mb-14">
-          <button
-            onClick={onOpenBooking}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs sm:text-sm uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_30px_rgba(245,158,11,0.6)]"
-          >
-            <Phone className="w-4 h-4 fill-black" />
-            <span>Call Desk To Book</span>
-          </button>
-
-          <Link
-            to="/menu"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-black/75 backdrop-blur-md border border-amber-500/40 text-amber-200 font-bold text-xs sm:text-sm hover:bg-black/90 hover:border-amber-400 hover:text-white transition-all shadow-lg"
-          >
-            <span>Explore Online Menu</span>
-            <ArrowDown className="w-4 h-4 text-orange-400" />
-          </Link>
+        {/* Authentic Atmosphere Showcase in 1960s Vintage Archival Frame */}
+        <div className="mb-10 max-w-5xl mx-auto">
+          <VintagePhotoFrame
+            src={heroBgUrl}
+            alt="Pata Pata traditional potjie pot on polished timber dining table with warm ambient lamps"
+            aspectRatio="aspect-[16/9] md:aspect-[21/9]"
+            plateText="286 FOX STREET • MARABI DINING ROOM • EST. 1967"
+            caption="Cast-iron potjie pots, flickering candles & warm timber tables"
+            priority={true}
+            showCorners={true}
+          />
         </div>
 
-        {/* 4-Item Quick Facts Strip with Red/Yellow/Orange Highlights */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 w-full max-w-4xl text-left">
+        {/* Vintage Jazz Sketches Duo Strip (Old Saxophonist & 1960s Dancers) */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200 mb-8">
+          <div className="flex items-center justify-between gap-3 mb-3 pb-2 border-b border-stone-200">
+            <div className="flex items-center gap-2">
+              <SaxophoneSilhouette className="w-4 h-5 text-stone-900" />
+              <span className="text-xs font-bold uppercase tracking-wider text-stone-800">
+                1960s Sophiatown Marabi Heritage
+              </span>
+            </div>
+            <span className="text-[11px] font-mono text-stone-500 hidden sm:inline">
+              Vintage Ink Sketches &amp; Dance Soul
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Sketch 1: Old Saxophonist */}
+            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-white border border-stone-200 shadow-2xs">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden shrink-0 border border-stone-200 bg-stone-100">
+                <img
+                  src={VINTAGE_SAX_SKETCH}
+                  alt="Vintage black ink sketch of elder jazz saxophonist playing"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono font-bold text-stone-500 uppercase tracking-wider block">
+                  The Elder Horn
+                </span>
+                <h3 className="text-sm font-bold text-stone-950 font-display">
+                  Sophiatown Saxophone Soul
+                </h3>
+                <p className="text-xs text-stone-600 leading-snug mt-1">
+                  Echoing the timeless brass riffs of Hugh Masekela and Kippie Moeketsi.
+                </p>
+              </div>
+            </div>
+
+            {/* Sketch 2: Touch Dance Couple */}
+            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-white border border-stone-200 shadow-2xs">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden shrink-0 border border-stone-200 bg-stone-100">
+                <img
+                  src={VINTAGE_DANCERS_SKETCH}
+                  alt="Vintage ink line sketch of couples dancing the 1960s Pata Pata touch dance"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono font-bold text-stone-500 uppercase tracking-wider block">
+                  The Touch Dance
+                </span>
+                <h3 className="text-sm font-bold text-stone-950 font-display">
+                  Miriam Makeba Rhythm
+                </h3>
+                <p className="text-xs text-stone-600 leading-snug mt-1">
+                  &ldquo;Everybody starts to move as soon as Pata Pata starts to play!&rdquo;
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 4 Clean Quick Fact Badges */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-left">
           
-          <div className="p-3 sm:p-4 rounded-xl bg-black/80 backdrop-blur-md border border-orange-500/30 hover:border-orange-500/60 transition-colors relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 to-orange-500" />
-            <div className="flex items-center gap-1.5 sm:gap-2 text-orange-400 mb-1">
-              <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-zinc-300">Desk Line</span>
+          <div className="p-4 rounded-xl bg-stone-50 border border-stone-200">
+            <div className="flex items-center gap-2 text-stone-900 mb-1">
+              <Phone className="w-4 h-4 text-stone-700" />
+              <span className="text-xs font-bold uppercase tracking-wider text-stone-500">Phone Desk</span>
             </div>
-            <span className="text-xs sm:text-sm font-bold text-white block truncate">+27 11 334 0470</span>
-            <span className="text-[10px] sm:text-[11px] text-amber-300">Call to hold table</span>
+            <a href="tel:+27113340470" className="text-sm font-bold text-stone-950 block hover:underline">
+              +27 11 334 0470
+            </a>
+            <span className="text-xs text-stone-600">Table reservations & inquiries</span>
           </div>
 
-          <div className="p-3 sm:p-4 rounded-xl bg-black/80 backdrop-blur-md border border-yellow-500/30 hover:border-yellow-500/60 transition-colors relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-orange-500 to-yellow-400" />
-            <div className="flex items-center gap-1.5 sm:gap-2 text-yellow-400 mb-1">
-              <Music className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-zinc-300">Live Jazz</span>
+          <div className="p-4 rounded-xl bg-stone-50 border border-stone-200">
+            <div className="flex items-center gap-2 text-stone-900 mb-1">
+              <Clock className="w-4 h-4 text-stone-700" />
+              <span className="text-xs font-bold uppercase tracking-wider text-stone-500">Operating Hours</span>
             </div>
-            <span className="text-xs sm:text-sm font-bold text-white block">Fri, Sat & Sun</span>
-            <span className="text-[10px] sm:text-[11px] text-amber-300">Candlelight sets</span>
+            <span className="text-sm font-bold text-stone-950 block">08:00 – 23:00</span>
+            <span className="text-xs text-stone-600">Open 7 days every week</span>
           </div>
 
-          <div className="p-3 sm:p-4 rounded-xl bg-black/80 backdrop-blur-md border border-red-500/30 hover:border-red-500/60 transition-colors relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500" />
-            <div className="flex items-center gap-1.5 sm:gap-2 text-red-400 mb-1">
-              <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-zinc-300">Precinct</span>
+          <div className="p-4 rounded-xl bg-stone-50 border border-stone-200">
+            <div className="flex items-center gap-2 text-stone-900 mb-1">
+              <Music className="w-4 h-4 text-stone-700" />
+              <span className="text-xs font-bold uppercase tracking-wider text-stone-500">Live Jazz</span>
             </div>
-            <span className="text-xs sm:text-sm font-bold text-white block truncate">286 Fox Street</span>
-            <span className="text-[10px] sm:text-[11px] text-amber-300">Maboneng, Joburg</span>
+            <span className="text-sm font-bold text-stone-950 block">Fri, Sat & Sun</span>
+            <span className="text-xs text-stone-600">Evening sets from 18:30</span>
           </div>
 
-          <div className="p-3 sm:p-4 rounded-xl bg-black/80 backdrop-blur-md border border-amber-500/30 hover:border-amber-500/60 transition-colors relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-600 to-amber-400" />
-            <div className="flex items-center gap-1.5 sm:gap-2 text-amber-400 mb-1">
-              <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-zinc-300">Service</span>
+          <div className="p-4 rounded-xl bg-stone-50 border border-stone-200">
+            <div className="flex items-center gap-2 text-stone-900 mb-1">
+              <MapPin className="w-4 h-4 text-stone-700" />
+              <span className="text-xs font-bold uppercase tracking-wider text-stone-500">Neighborhood</span>
             </div>
-            <span className="text-xs sm:text-sm font-bold text-white block">08:00 – 23:00</span>
-            <span className="text-[10px] sm:text-[11px] text-amber-300">Open 7 days</span>
+            <span className="text-sm font-bold text-stone-950 block">Fox Street, Joburg</span>
+            <span className="text-xs text-stone-600">Heart of Maboneng Arts Hub</span>
           </div>
 
         </div>

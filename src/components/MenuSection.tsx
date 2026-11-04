@@ -1,7 +1,10 @@
 import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
-import { Search, Flame, Plus, Check, X, Phone, Utensils, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Plus, Check, X, Phone, Utensils, ChevronLeft, ChevronRight } from 'lucide-react';
 import { MENU_CATEGORIES, MENU_ITEMS, MenuItem } from '../data/menuData';
-import { CandleFlame, JazzyPatternRibbon } from './CandlelightVibe';
+import { SaxophoneSilhouette, DancingCoupleSilhouette, VINTAGE_DANCERS_SKETCH } from './JazzSketches';
+import { VintageMenuRibbon, VintageStampBadge } from './VintageAccents';
+import { AfricanGeometricDivider, AfricanContinentSVG } from './AfricanMotifs';
+import { VintagePhotoFrame } from './VintagePhotoFrame';
 
 interface MenuSectionProps {
   onOpenBooking: () => void;
@@ -45,19 +48,17 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
     return () => window.removeEventListener('resize', checkScroll);
   }, [checkScroll]);
 
-  // The 2 authentic kitchen photographs provided by Pata Pata
+  // The 2 authentic kitchen photographs provided by Pata Pata (unlabeled as requested)
   const stewDomboloPhotoUrl = '/assets/aistudio/WhatsApp_Image_2026-10-27_at_3.53.36_PM__1__48d9f749.jpg';
   const harvestVegPhotoUrl = '/assets/aistudio/WhatsApp_Image_2026-10-27_at_3.53.36_PM_d00fe59c.jpg';
 
   // Filter items
   const filteredItems = useMemo(() => {
     return MENU_ITEMS.filter((item) => {
-      // Category match
       const matchesCategory = activeCategory === 'traditional' && searchQuery.trim() !== '' 
         ? true 
         : item.category === activeCategory;
 
-      // Search match
       const q = searchQuery.toLowerCase().trim();
       const matchesSearch = q === '' || (
         item.name.toLowerCase().includes(q) ||
@@ -65,7 +66,6 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
         item.tags.some(t => t.toLowerCase().includes(q))
       );
 
-      // Tag filter
       const matchesTag = selectedTag === 'all' || (
         selectedTag === 'special' ? item.isChefSpecial :
         selectedTag === 'spicy' ? (item.spicyLevel && item.spicyLevel > 0) :
@@ -93,369 +93,373 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
   const activeCategoryInfo = MENU_CATEGORIES.find(c => c.id === activeCategory);
 
   return (
-    <section id="menu" className="relative py-24 bg-transparent text-white border-t border-amber-950/40 overflow-hidden">
-      
-      {/* Warm Jazz Backlight */}
-      <div 
-        aria-hidden="true" 
-        className="absolute top-1/4 right-0 w-[550px] h-[550px] bg-gradient-to-b from-red-600/10 via-orange-500/15 to-transparent rounded-full blur-[130px] pointer-events-none" 
-      />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="menu" className="py-16 sm:py-20 bg-white text-stone-900 border-t border-stone-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-950 border border-amber-500/30 text-xs font-bold uppercase tracking-widest text-amber-400 mb-3 shadow-md">
-            <CandleFlame className="scale-75" />
-            <span>Fox Street Soul Kitchen</span>
+        {/* Humble Section Header with Jazzy Silhouettes */}
+        <div className="text-center max-w-2xl mx-auto mb-10 relative">
+          <div className="flex items-center justify-center gap-4 mb-2">
+            <SaxophoneSilhouette className="w-8 h-10 text-stone-900 opacity-70 hidden sm:block" />
+            <span className="text-xs font-bold uppercase tracking-wider text-stone-500 block">
+              Fox Street Kitchen &amp; Marabi Sounds
+            </span>
+            <DancingCoupleSilhouette className="w-9 h-10 text-stone-900 opacity-70 hidden sm:block" />
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white mb-3">
-            The Online Menu
+
+          <h2 className="text-3xl sm:text-4xl font-black font-display text-stone-950 mb-3">
+            Our Food & Drinks Menu
           </h2>
-          <p className="text-zinc-300 text-sm leading-relaxed">
-            Slow-cooked Mogodu, 6-hour Oxtail potjies, flame-seared T-bones, and signature Miriam Makeba cocktails. Prices in South African Rand (ZAR).
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+            Slow-cooked Mogodu, 6-hour Oxtail potjies, flame-seared braai cuts, and signature Miriam Makeba cocktails. All prices in South African Rand (ZAR).
           </p>
         </div>
 
-        {/* Jazzy Pattern Ribbon */}
-        <div className="mb-12 max-w-xl mx-auto">
-          <JazzyPatternRibbon />
-        </div>
-
-        {/* Menu Flanking Layout: Left Unlabeled Photo · Menu Detail (Center) · Right Unlabeled Photo */}
+        {/* Menu Flanking Layout: Left Unlabeled Framed Photo · Menu Detail (Center) · Right Unlabeled Framed Photo */}
         <div className="flex flex-col lg:flex-row items-start gap-6 xl:gap-8">
           
-          {/* Left Side: Unlabeled Kitchen Photo (Stew & Dombolo) */}
+          {/* Left Side: Unlabeled Kitchen Photo in 1960s Archival Frame */}
           <div className="hidden lg:block lg:w-48 xl:w-56 shrink-0">
             <div className="sticky top-28">
-              <div className="rounded-2xl overflow-hidden border border-amber-500/30 bg-zinc-950 shadow-xl group hover:border-amber-400/50 transition-all duration-300">
-                <img
-                  src={stewDomboloPhotoUrl}
-                  alt="Pata Pata Kitchen"
-                  className="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500 filter contrast-[1.05]"
-                  loading="lazy"
-                />
-              </div>
+              <VintagePhotoFrame
+                src={stewDomboloPhotoUrl}
+                alt="Kitchen specialty"
+                aspectRatio="aspect-[3/4]"
+                showCorners={true}
+              />
             </div>
           </div>
 
           {/* Center Column: The Menu Detail */}
           <div className="flex-1 min-w-0 w-full">
             
-            {/* Mobile / Tablet (< lg): Unlabeled photos side-by-side framing menu detail */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8 lg:hidden">
-              <div className="rounded-2xl overflow-hidden border border-amber-500/30 bg-zinc-950 shadow-lg aspect-[4/3]">
-                <img
-                  src={stewDomboloPhotoUrl}
-                  alt="Pata Pata Kitchen"
-                  className="w-full h-full object-cover filter contrast-[1.05]"
-                  loading="lazy"
-                />
-              </div>
-              <div className="rounded-2xl overflow-hidden border border-amber-500/30 bg-zinc-950 shadow-lg aspect-[4/3]">
-                <img
-                  src={harvestVegPhotoUrl}
-                  alt="Pata Pata Kitchen"
-                  className="w-full h-full object-cover filter contrast-[1.05]"
-                  loading="lazy"
-                />
-              </div>
+            {/* Mobile / Tablet (< lg): Unlabeled photos side-by-side in vintage frames */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 lg:hidden">
+              <VintagePhotoFrame
+                src={stewDomboloPhotoUrl}
+                alt="Kitchen specialty"
+                aspectRatio="aspect-[4/3]"
+                showCorners={true}
+              />
+              <VintagePhotoFrame
+                src={harvestVegPhotoUrl}
+                alt="Kitchen specialty"
+                aspectRatio="aspect-[4/3]"
+                showCorners={true}
+              />
             </div>
+
+            {/* 1960s Traditional Kitchen Pass Ribbon */}
+            <VintageMenuRibbon title="TRADITIONAL SOUTH AFRICAN PASS • 1960s SOPHIATOWN HERITAGE" />
 
             {/* Search & Tag Filter Bar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-8">
-          {/* Search Input */}
-          <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-amber-500" />
-            <input
-              type="text"
-              placeholder="Search dishes, oxtail, samosas, cocktails..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-zinc-950 border border-zinc-800 focus:border-amber-400 rounded-xl text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            )}
-          </div>
-
-          {/* Quick Tag Pills in Warm Red/Yellow/Orange */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none text-xs">
-            <button
-              onClick={() => setSelectedTag('all')}
-              className={`px-3 py-1.5 rounded-lg font-bold whitespace-nowrap transition-colors ${
-                selectedTag === 'all'
-                  ? 'bg-white text-black'
-                  : 'bg-zinc-950 text-zinc-300 border border-zinc-800 hover:text-white'
-              }`}
-            >
-              All Plates
-            </button>
-            <button
-              onClick={() => setSelectedTag('special')}
-              className={`px-3 py-1.5 rounded-lg font-bold whitespace-nowrap transition-colors flex items-center gap-1.5 ${
-                selectedTag === 'special'
-                  ? 'bg-amber-400 text-black shadow-[0_0_12px_rgba(251,191,36,0.5)]'
-                  : 'bg-zinc-950 text-amber-300 border border-amber-900/40 hover:text-white'
-              }`}
-            >
-              <CandleFlame className="scale-65" /> Chef’s Special
-            </button>
-            <button
-              onClick={() => setSelectedTag('spicy')}
-              className={`px-3 py-1.5 rounded-lg font-bold whitespace-nowrap transition-colors flex items-center gap-1 ${
-                selectedTag === 'spicy'
-                  ? 'bg-red-600 text-white shadow-[0_0_12px_rgba(220,38,38,0.5)]'
-                  : 'bg-zinc-950 text-red-400 border border-red-900/40 hover:text-white'
-              }`}
-            >
-              <Flame className="w-3.5 h-3.5" /> Peri-Peri / Fiery
-            </button>
-            <button
-              onClick={() => setSelectedTag('vegetarian')}
-              className={`px-3 py-1.5 rounded-lg font-bold whitespace-nowrap transition-colors ${
-                selectedTag === 'vegetarian'
-                  ? 'bg-orange-500 text-black'
-                  : 'bg-zinc-950 text-orange-400 border border-orange-900/40 hover:text-white'
-              }`}
-            >
-              Vegetarian
-            </button>
-          </div>
-        </div>
-
-        {/* Category Navigation Tabs with Forward and Back Scrolling Arrows */}
-        {!searchQuery && (
-          <div className="relative mb-8">
-            <div className="flex items-center gap-1.5 sm:gap-2 pb-3 border-b border-zinc-800">
-              
-              {/* Scroll Back Arrow Button */}
-              <button
-                type="button"
-                onClick={() => scrollCategories('left')}
-                disabled={!canScrollLeft}
-                className={`p-2 sm:p-2.5 rounded-xl border transition-all shrink-0 flex items-center justify-center min-h-[44px] min-w-[44px] ${
-                  canScrollLeft
-                    ? 'bg-zinc-900 border-amber-500/50 text-amber-300 hover:text-white hover:bg-zinc-850 hover:border-amber-400 active:scale-95 shadow-md shadow-orange-950/20'
-                    : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-600 cursor-not-allowed opacity-40'
-                }`}
-                aria-label="Scroll categories back"
-                title="Scroll categories back"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-
-              {/* Scrollable Categories Row Container */}
-              <div
-                ref={categoriesScrollRef}
-                onScroll={checkScroll}
-                className="flex-1 flex items-center gap-2 overflow-x-auto py-1 scroll-smooth scrollbar-none"
-              >
-                {MENU_CATEGORIES.map((cat) => {
-                  const isActive = activeCategory === cat.id;
-                  return (
-                    <button
-                      key={cat.id}
-                      onClick={(e) => {
-                        setActiveCategory(cat.id);
-                        e.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                        setTimeout(checkScroll, 300);
-                      }}
-                      className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide whitespace-nowrap transition-all shrink-0 min-h-[44px] ${
-                        isActive
-                          ? 'bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-black shadow-lg shadow-orange-950/50 scale-[1.02]'
-                          : 'bg-zinc-950 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-zinc-850 hover:border-amber-500/40'
-                      }`}
-                    >
-                      {cat.label}
-                    </button>
-                  );
-                })}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-6">
+              {/* Search Input */}
+              <div className="relative flex-1 max-w-md">
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+                <input
+                  type="text"
+                  placeholder="Search dishes, oxtail, samosas, cocktails..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 bg-stone-50 border border-stone-200 focus:border-stone-900 rounded-xl text-sm text-stone-900 placeholder-stone-400 focus:outline-none transition-colors"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-900"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
               </div>
 
-              {/* Scroll Forward Arrow Button */}
-              <button
-                type="button"
-                onClick={() => scrollCategories('right')}
-                disabled={!canScrollRight}
-                className={`p-2 sm:p-2.5 rounded-xl border transition-all shrink-0 flex items-center justify-center min-h-[44px] min-w-[44px] ${
-                  canScrollRight
-                    ? 'bg-zinc-900 border-amber-500/50 text-amber-300 hover:text-white hover:bg-zinc-850 hover:border-amber-400 active:scale-95 shadow-md shadow-orange-950/20'
-                    : 'bg-zinc-950/60 border-zinc-800/80 text-zinc-600 cursor-not-allowed opacity-40'
-                }`}
-                aria-label="Scroll categories forward"
-                title="Scroll categories forward"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-
+              {/* Quick Tag Pills */}
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none text-xs">
+                <button
+                  onClick={() => setSelectedTag('all')}
+                  className={`px-3 py-1.5 rounded-lg font-semibold whitespace-nowrap transition-colors ${
+                    selectedTag === 'all'
+                      ? 'bg-black text-white'
+                      : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                  }`}
+                >
+                  All Plates
+                </button>
+                <button
+                  onClick={() => setSelectedTag('special')}
+                  className={`px-3 py-1.5 rounded-lg font-semibold whitespace-nowrap transition-colors ${
+                    selectedTag === 'special'
+                      ? 'bg-black text-white'
+                      : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                  }`}
+                >
+                  Chef’s Special
+                </button>
+                <button
+                  onClick={() => setSelectedTag('spicy')}
+                  className={`px-3 py-1.5 rounded-lg font-semibold whitespace-nowrap transition-colors ${
+                    selectedTag === 'spicy'
+                      ? 'bg-black text-white'
+                      : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                  }`}
+                >
+                  Fiery & Spiced
+                </button>
+                <button
+                  onClick={() => setSelectedTag('vegetarian')}
+                  className={`px-3 py-1.5 rounded-lg font-semibold whitespace-nowrap transition-colors ${
+                    selectedTag === 'vegetarian'
+                      ? 'bg-black text-white'
+                      : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                  }`}
+                >
+                  Vegetarian
+                </button>
+              </div>
             </div>
-          </div>
-        )}
 
-        {/* Category Tagline */}
-        {!searchQuery && activeCategoryInfo && (
-          <div className="mb-8 flex items-center justify-between">
-            <p className="text-xs text-amber-300/90 italic">
-              — {activeCategoryInfo.tagline}
-            </p>
-            <span className="text-xs font-mono text-zinc-400">
-              {filteredItems.length} {filteredItems.length === 1 ? 'dish' : 'dishes'}
-            </span>
-          </div>
-        )}
-
-        {/* Menu Items Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-          {filteredItems.map((item) => {
-            const isWishlisted = wishlist.some(w => w.id === item.id);
-            return (
-              <div
-                key={item.id}
-                onClick={() => setSelectedDish(item)}
-                className="group relative p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-zinc-950 border border-zinc-850 hover:border-amber-500/50 hover:bg-zinc-900/70 transition-all cursor-pointer flex flex-col justify-between"
-              >
-                <div>
-                  {/* Card Top: Title, Price, & Action */}
-                  <div className="flex items-start justify-between gap-2.5 sm:gap-4 mb-2">
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                        <h3 className="text-base sm:text-lg font-bold font-display text-white group-hover:text-amber-400 transition-colors">
-                          {item.name}
-                        </h3>
-                        {item.isChefSpecial && (
-                          <span className="text-[9px] sm:text-[10px] uppercase font-extrabold tracking-wider text-amber-400 bg-amber-400/10 px-1.5 sm:px-2 py-0.5 rounded border border-amber-400/30 shrink-0 flex items-center gap-1">
-                            ★ Special
-                          </span>
-                        )}
-                      </div>
-                      
-                      {/* Zero-Pill Metadata */}
-                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-zinc-400 mt-1">
-                        {item.tags.map((t, idx) => (
-                          <span key={idx} className="flex items-center gap-1.5 sm:gap-2">
-                            <span>{t}</span>
-                            {idx < item.tags.length - 1 && <span aria-hidden="true">·</span>}
-                          </span>
-                        ))}
-                        {item.spicyLevel && item.spicyLevel > 0 && (
-                          <>
-                            <span aria-hidden="true">·</span>
-                            <span className="text-red-400 flex items-center gap-0.5 font-bold">
-                              <Flame className="w-3 h-3" />
-                              {'🌶️'.repeat(item.spicyLevel)}
-                            </span>
-                          </>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Price in Rand */}
-                    <div className="text-right shrink-0 pl-1">
-                      <span className="text-base sm:text-lg font-black font-display tracking-tight text-amber-300 tabular-nums">
-                        R{item.price}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm text-zinc-300 line-clamp-2 leading-relaxed mb-3 sm:mb-4">
-                    {item.description}
-                  </p>
-                </div>
-
-                {/* Card Bottom: Pairing / Wishlist trigger */}
-                <div className="flex items-center justify-between pt-2.5 sm:pt-3 border-t border-zinc-900 text-xs gap-2">
-                  <span className="text-zinc-400 truncate text-[11px] sm:text-xs max-w-[170px] sm:max-w-[240px]">
-                    {item.pairing ? `Pairing: ${item.pairing}` : 'Tap for details'}
-                  </span>
-
+            {/* Category Navigation Tabs with Forward and Back Scrolling Arrows */}
+            {!searchQuery && (
+              <div className="relative mb-6">
+                <div className="flex items-center gap-2 pb-3 border-b border-stone-200">
+                  
+                  {/* Scroll Back Arrow Button */}
                   <button
                     type="button"
-                    onClick={(e) => toggleWishlist(item, e)}
-                    className={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-bold transition-all shrink-0 ${
-                      isWishlisted
-                        ? 'bg-amber-400 text-black font-extrabold shadow-[0_0_10px_rgba(251,191,36,0.4)]'
-                        : 'bg-zinc-900 text-amber-300 hover:text-white hover:bg-orange-600 hover:text-black'
+                    onClick={() => scrollCategories('left')}
+                    disabled={!canScrollLeft}
+                    className={`p-2 rounded-lg border transition-all shrink-0 flex items-center justify-center min-h-[40px] min-w-[40px] ${
+                      canScrollLeft
+                        ? 'bg-stone-50 border-stone-300 text-stone-900 hover:bg-stone-100'
+                        : 'bg-stone-100/50 border-stone-200 text-stone-300 cursor-not-allowed opacity-40'
                     }`}
-                    title={isWishlisted ? 'In table order note' : 'Add to table order note'}
+                    aria-label="Scroll categories back"
                   >
-                    {isWishlisted ? (
-                      <>
-                        <Check className="w-3.5 h-3.5" />
-                        <span>Added</span>
-                      </>
-                    ) : (
-                      <>
-                        <Plus className="w-3.5 h-3.5" />
-                        <span>Add Note</span>
-                      </>
-                    )}
+                    <ChevronLeft className="w-4 h-4" />
                   </button>
+
+                  {/* Scrollable Categories Row Container */}
+                  <div
+                    ref={categoriesScrollRef}
+                    onScroll={checkScroll}
+                    className="flex-1 flex items-center gap-2 overflow-x-auto py-1 scroll-smooth scrollbar-none"
+                  >
+                    {MENU_CATEGORIES.map((cat) => {
+                      const isActive = activeCategory === cat.id;
+                      return (
+                        <button
+                          key={cat.id}
+                          onClick={(e) => {
+                            setActiveCategory(cat.id);
+                            e.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                            setTimeout(checkScroll, 300);
+                          }}
+                          className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all shrink-0 ${
+                            isActive
+                              ? 'bg-black text-white'
+                              : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                          }`}
+                        >
+                          {cat.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Scroll Forward Arrow Button */}
+                  <button
+                    type="button"
+                    onClick={() => scrollCategories('right')}
+                    disabled={!canScrollRight}
+                    className={`p-2 rounded-lg border transition-all shrink-0 flex items-center justify-center min-h-[40px] min-w-[40px] ${
+                      canScrollRight
+                        ? 'bg-stone-50 border-stone-300 text-stone-900 hover:bg-stone-100'
+                        : 'bg-stone-100/50 border-stone-200 text-stone-300 cursor-not-allowed opacity-40'
+                    }`}
+                    aria-label="Scroll categories forward"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+
                 </div>
               </div>
-            );
-          })}
-        </div>
+            )}
 
-        {/* Empty Search State */}
-        {filteredItems.length === 0 && (
-          <div className="text-center py-16 px-4 bg-zinc-950/60 rounded-2xl border border-zinc-900">
-            <Utensils className="w-8 h-8 text-zinc-600 mx-auto mb-3" />
-            <h4 className="text-base font-bold text-white mb-1">No dishes matched &apos;{searchQuery}&apos;</h4>
-            <p className="text-xs text-zinc-400 mb-4">Try searching for &apos;oxtail&apos;, &apos;mogodu&apos;, &apos;samosas&apos;, or &apos;platter&apos;.</p>
-            <button
-              onClick={() => { setSearchQuery(''); setSelectedTag('all'); }}
-              className="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-semibold text-white hover:bg-zinc-800"
-            >
-              Reset Filters
-            </button>
-          </div>
-        )}
+            {/* Category Tagline */}
+            {!searchQuery && activeCategoryInfo && (
+              <div className="mb-6 flex items-center justify-between text-xs text-stone-500">
+                <p className="italic">
+                  — {activeCategoryInfo.tagline}
+                </p>
+                <span className="font-mono">
+                  {filteredItems.length} {filteredItems.length === 1 ? 'dish' : 'dishes'}
+                </span>
+              </div>
+            )}
 
-        {/* Call Host Note below menu */}
-        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-red-950/40 via-zinc-900 to-amber-950/40 border border-amber-500/30 flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
-          <div className="flex items-center gap-4 text-left">
-            <div className="w-12 h-12 rounded-xl bg-black border border-amber-500/40 flex items-center justify-center text-amber-400 shrink-0">
-              <Phone className="w-6 h-6" />
+            {/* Menu Items Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {filteredItems.map((item) => {
+                const isWishlisted = wishlist.some(w => w.id === item.id);
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => setSelectedDish(item)}
+                    className="group p-4 sm:p-5 rounded-xl bg-white border border-stone-200 hover:border-stone-400 transition-colors cursor-pointer flex flex-col justify-between shadow-2xs"
+                  >
+                    <div>
+                      {/* Card Top: Title & Price */}
+                      <div className="flex items-start justify-between gap-3 mb-1.5">
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-1.5">
+                            <h3 className="text-base font-bold text-stone-950 group-hover:text-black">
+                              {item.name}
+                            </h3>
+                            {item.isChefSpecial && (
+                              <span className="text-[10px] uppercase font-bold tracking-wider text-stone-700 bg-stone-100 px-1.5 py-0.5 rounded shrink-0">
+                                Special
+                              </span>
+                            )}
+                          </div>
+                          
+                          <div className="flex flex-wrap items-center gap-1.5 text-xs text-stone-500 mt-0.5">
+                            {item.tags.map((t, idx) => (
+                              <span key={idx} className="flex items-center gap-1.5">
+                                <span>{t}</span>
+                                {idx < item.tags.length - 1 && <span>·</span>}
+                              </span>
+                            ))}
+                            {item.spicyLevel && item.spicyLevel > 0 && (
+                              <>
+                                <span>·</span>
+                                <span className="text-stone-700 font-medium">
+                                  Spiced
+                                </span>
+                              </>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Price */}
+                        <div className="text-right shrink-0">
+                          <span className="text-base font-bold text-stone-950 tabular-nums">
+                            R{item.price}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed mb-3">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* Card Bottom: Pairing / Add Note */}
+                    <div className="flex items-center justify-between pt-2.5 border-t border-stone-100 text-xs gap-2">
+                      <span className="text-stone-500 truncate text-xs max-w-[180px] sm:max-w-[240px]">
+                        {item.pairing ? `Pairing: ${item.pairing}` : 'Tap for details'}
+                      </span>
+
+                      <button
+                        type="button"
+                        onClick={(e) => toggleWishlist(item, e)}
+                        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold transition-colors shrink-0 ${
+                          isWishlisted
+                            ? 'bg-black text-white'
+                            : 'bg-stone-100 text-stone-800 hover:bg-stone-200'
+                        }`}
+                      >
+                        {isWishlisted ? (
+                          <>
+                            <Check className="w-3.5 h-3.5" />
+                            <span>Saved</span>
+                          </>
+                        ) : (
+                          <>
+                            <Plus className="w-3.5 h-3.5" />
+                            <span>Add Note</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <div>
-              <h4 className="text-base font-bold font-display text-white">
-                Craving our slow-simmered Oxtail, Stew or Mogodu?
-              </h4>
-              <p className="text-xs text-zinc-300">
-                Call our front desk to ensure your favorite dish is held hot for your dinner or jazz night.
-              </p>
-            </div>
-          </div>
 
-          <button
-            onClick={onOpenBooking}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 transition-colors shrink-0 shadow-lg shadow-orange-950/40"
-          >
-            <Phone className="w-4 h-4 fill-black" />
-            <span>Call Desk To Book</span>
-          </button>
-        </div>
+            {/* Empty Search State */}
+            {filteredItems.length === 0 && (
+              <div className="text-center py-12 px-4 bg-stone-50 rounded-xl border border-stone-200">
+                <Utensils className="w-6 h-6 text-stone-400 mx-auto mb-2" />
+                <h4 className="text-sm font-bold text-stone-900 mb-1">No dishes matched &apos;{searchQuery}&apos;</h4>
+                <p className="text-xs text-stone-500 mb-4">Try searching for &apos;oxtail&apos;, &apos;mogodu&apos;, or &apos;potjie&apos;.</p>
+                <button
+                  onClick={() => { setSearchQuery(''); setSelectedTag('all'); }}
+                  className="px-3.5 py-1.5 rounded-lg bg-white border border-stone-300 text-xs font-semibold text-stone-900 hover:bg-stone-100"
+                >
+                  Reset Search
+                </button>
+              </div>
+            )}
 
-          </div>
-
-          {/* Right Side: Unlabeled Kitchen Photo (Pan-Sautéed Greens) */}
-          <div className="hidden lg:block lg:w-48 xl:w-56 shrink-0">
-            <div className="sticky top-28">
-              <div className="rounded-2xl overflow-hidden border border-amber-500/30 bg-zinc-950 shadow-xl group hover:border-amber-400/50 transition-all duration-300">
+            {/* Vintage Touch-Dance Sketch Vignette */}
+            <div className="mt-8 p-4 rounded-xl bg-stone-50 border border-stone-200 flex items-center gap-4">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden shrink-0 border border-stone-200 bg-white">
                 <img
-                  src={harvestVegPhotoUrl}
-                  alt="Pata Pata Kitchen"
-                  className="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500 filter contrast-[1.05]"
-                  loading="lazy"
+                  src={VINTAGE_DANCERS_SKETCH}
+                  alt="Vintage sketch of Sophiatown touch dance"
+                  className="w-full h-full object-cover"
                 />
               </div>
+              <div className="flex-1 min-w-0">
+                <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-stone-500 block">
+                  1960s Sophiatown Beat
+                </span>
+                <h4 className="text-sm font-bold text-stone-950 font-display">
+                  Food That Moves With The Rhythm
+                </h4>
+                <p className="text-xs text-stone-600 line-clamp-2">
+                  Just like Miriam Makeba sang, every plate at Pata Pata is served with rhythm, laughter, and warm African hospitality.
+                </p>
+              </div>
+            </div>
+
+            {/* Call Host Note below menu */}
+            <div className="mt-6 p-6 rounded-xl bg-stone-50 border border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5 text-left">
+                <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-stone-950">
+                    Craving our slow-simmered Oxtail or Mogodu?
+                  </h4>
+                  <p className="text-xs text-stone-600">
+                    Call our desk host to ensure your favorite dish is held hot for your arrival.
+                  </p>
+                </div>
+              </div>
+
+              <button
+                onClick={onOpenBooking}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-black text-white font-semibold text-xs uppercase tracking-wider hover:bg-stone-800 transition-colors shrink-0"
+              >
+                <Phone className="w-3.5 h-3.5" />
+                <span>Call Desk (+27 11 334 0470)</span>
+              </button>
+            </div>
+
+          </div>
+
+          {/* Right Side: Unlabeled Kitchen Photo in 1960s Archival Frame */}
+          <div className="hidden lg:block lg:w-48 xl:w-56 shrink-0">
+            <div className="sticky top-28">
+              <VintagePhotoFrame
+                src={harvestVegPhotoUrl}
+                alt="Kitchen specialty"
+                aspectRatio="aspect-[3/4]"
+                showCorners={true}
+              />
             </div>
           </div>
 
@@ -466,14 +470,14 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
       {/* Dish Detail Modal */}
       {selectedDish && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs"
           role="dialog"
           aria-modal="true"
         >
-          <div className="relative w-full max-w-lg bg-zinc-950 border border-amber-500/40 rounded-2xl p-6 sm:p-8 text-white shadow-2xl max-h-[90vh] overflow-y-auto">
+          <div className="relative w-full max-w-lg bg-white border border-stone-300 rounded-2xl p-6 sm:p-8 text-stone-900 shadow-xl max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setSelectedDish(null)}
-              className="absolute top-4 right-4 p-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-900 z-20"
+              className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-900 rounded-lg hover:bg-stone-100"
               aria-label="Close dish details"
             >
               <X className="w-5 h-5" />
@@ -481,53 +485,53 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
 
             <div className="flex items-start justify-between gap-4 mb-3">
               <div>
-                <span className="text-xs uppercase tracking-widest text-amber-400 font-bold">
+                <span className="text-xs uppercase tracking-wider text-stone-500 font-semibold">
                   {selectedDish.category.toUpperCase()}
                 </span>
-                <h3 className="text-2xl font-black font-display text-white mt-1">
+                <h3 className="text-xl sm:text-2xl font-bold font-display text-stone-950 mt-1">
                   {selectedDish.name}
                 </h3>
               </div>
-              <div className="text-2xl font-black font-display text-amber-300 tabular-nums shrink-0">
+              <div className="text-xl sm:text-2xl font-bold text-stone-950 tabular-nums shrink-0">
                 R{selectedDish.price}
               </div>
             </div>
 
-            <p className="text-sm text-zinc-300 leading-relaxed mb-6">
+            <p className="text-sm text-stone-600 leading-relaxed mb-5">
               {selectedDish.description}
             </p>
 
             {selectedDish.heritageNote && (
-              <div className="p-4 rounded-xl bg-black border border-amber-500/30 mb-5">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400 block mb-1 flex items-center gap-1.5">
-                  <CandleFlame className="scale-65" /> Heritage & Soul
+              <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 mb-5">
+                <span className="text-xs font-bold uppercase tracking-wider text-stone-900 block mb-1">
+                  Heritage Note
                 </span>
-                <p className="text-xs text-zinc-200 italic leading-relaxed">
+                <p className="text-xs text-stone-600 italic leading-relaxed">
                   &ldquo;{selectedDish.heritageNote}&rdquo;
                 </p>
               </div>
             )}
 
             {selectedDish.pairing && (
-              <div className="text-xs text-zinc-400 mb-6 flex items-center gap-2">
-                <span className="font-semibold text-amber-300">Recommended Pairing:</span>
+              <div className="text-xs text-stone-600 mb-6 flex items-center gap-2">
+                <span className="font-semibold text-stone-900">Recommended Pairing:</span>
                 <span>{selectedDish.pairing}</span>
               </div>
             )}
 
-            <div className="flex items-center justify-between gap-3 pt-4 border-t border-zinc-900">
+            <div className="flex items-center justify-between gap-3 pt-4 border-t border-stone-200">
               <button
                 onClick={(e) => toggleWishlist(selectedDish, e)}
-                className="flex-1 py-3 rounded-xl border border-zinc-750 bg-zinc-900 text-xs font-bold text-white hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2"
+                className="flex-1 py-2.5 rounded-lg border border-stone-300 bg-stone-50 text-xs font-semibold text-stone-900 hover:bg-stone-100 transition-colors flex items-center justify-center gap-1.5"
               >
                 {wishlist.some(w => w.id === selectedDish.id) ? (
                   <>
-                    <Check className="w-4 h-4 text-amber-400" />
+                    <Check className="w-4 h-4 text-stone-900" />
                     <span>In Your Table Notes</span>
                   </>
                 ) : (
                   <>
-                    <Plus className="w-4 h-4 text-amber-400" />
+                    <Plus className="w-4 h-4 text-stone-700" />
                     <span>Add to Table Order Notes</span>
                   </>
                 )}
@@ -538,9 +542,9 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
                   setSelectedDish(null);
                   onOpenBooking();
                 }}
-                className="py-3 px-5 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 text-black text-xs font-extrabold hover:brightness-110 transition-all flex items-center gap-2 shrink-0"
+                className="py-2.5 px-4 rounded-lg bg-black text-white text-xs font-semibold hover:bg-stone-800 transition-colors flex items-center gap-1.5 shrink-0"
               >
-                <Phone className="w-3.5 h-3.5 fill-black" />
+                <Phone className="w-3.5 h-3.5" />
                 <span>Call Desk</span>
               </button>
             </div>
@@ -548,19 +552,19 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
         </div>
       )}
 
-      {/* Floating Wishlist / Table Order Note Drawer Trigger */}
+      {/* Floating Wishlist / Table Order Note Trigger */}
       {wishlist.length > 0 && (
         <div className="fixed bottom-6 right-6 z-40">
           <button
             onClick={() => setShowWishlistDrawer(true)}
-            className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-zinc-950 border border-amber-500/50 text-white shadow-2xl hover:border-amber-400 transition-all glow-orange-sm"
+            className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-black text-white shadow-lg hover:bg-stone-800 transition-colors"
           >
-            <div className="w-6 h-6 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-black font-extrabold text-xs flex items-center justify-center">
+            <div className="w-5 h-5 rounded-full bg-white text-black font-bold text-xs flex items-center justify-center">
               {wishlist.length}
             </div>
-            <div className="text-left">
-              <span className="text-[11px] uppercase tracking-wider text-amber-300 font-semibold block">Table Order Note</span>
-              <span className="text-xs font-bold text-white font-mono">Est. R{wishlistTotal}</span>
+            <div className="text-left text-xs">
+              <span className="font-medium text-stone-300 block">Order Notes</span>
+              <span className="font-bold font-mono">Est. R{wishlistTotal}</span>
             </div>
           </button>
         </div>
@@ -568,41 +572,41 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
 
       {/* Wishlist Drawer Modal */}
       {showWishlistDrawer && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-end sm:justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-sm">
-          <div className="w-full sm:max-w-md bg-zinc-950 border border-amber-500/40 rounded-t-3xl sm:rounded-2xl p-6 text-white max-h-[80vh] overflow-y-auto">
-            <div className="flex items-center justify-between pb-4 border-b border-zinc-800 mb-4">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-end sm:justify-center p-0 sm:p-4 bg-black/60 backdrop-blur-xs">
+          <div className="w-full sm:max-w-md bg-white border border-stone-300 rounded-t-2xl sm:rounded-2xl p-6 text-stone-900 max-h-[80vh] overflow-y-auto shadow-xl">
+            <div className="flex items-center justify-between pb-3 border-b border-stone-200 mb-4">
               <div>
-                <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider">
-                  Your Custom Dining Selection
+                <span className="text-xs font-bold text-stone-500 uppercase tracking-wider">
+                  Dining Selection
                 </span>
-                <h3 className="text-lg font-bold font-display text-white">
-                  Table Order Notes ({wishlist.length} dishes)
+                <h3 className="text-base font-bold font-display text-stone-950">
+                  Table Order Notes ({wishlist.length} items)
                 </h3>
               </div>
               <button
                 onClick={() => setShowWishlistDrawer(false)}
-                className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-900"
+                className="p-1 rounded-lg text-stone-400 hover:text-stone-900 hover:bg-stone-100"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
             </div>
 
-            <p className="text-xs text-zinc-300 mb-4">
-              Keep this list handy when you call the front desk to reserve or arrive for your meal!
+            <p className="text-xs text-stone-600 mb-4">
+              Keep this list handy when you call the front desk or arrive at your table!
             </p>
 
-            <div className="space-y-2 mb-6">
+            <div className="space-y-2 mb-4">
               {wishlist.map((item) => (
-                <div key={item.id} className="flex items-center justify-between p-3 rounded-xl bg-zinc-900/70 border border-zinc-800 text-xs">
+                <div key={item.id} className="flex items-center justify-between p-2.5 rounded-lg bg-stone-50 border border-stone-200 text-xs">
                   <div>
-                    <span className="font-semibold text-white block">{item.name}</span>
-                    <span className="text-[11px] text-amber-400">{item.category}</span>
+                    <span className="font-semibold text-stone-950 block">{item.name}</span>
+                    <span className="text-stone-500 text-[11px]">{item.category}</span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-zinc-200">R{item.price}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-stone-800 font-medium">R{item.price}</span>
                     <button
                       onClick={(e) => toggleWishlist(item, e)}
-                      className="text-zinc-500 hover:text-red-400"
+                      className="text-stone-400 hover:text-stone-900"
                     >
                       <X className="w-3.5 h-3.5" />
                     </button>
@@ -611,23 +615,21 @@ export function MenuSection({ onOpenBooking }: MenuSectionProps) {
               ))}
             </div>
 
-            <div className="flex items-center justify-between py-3 border-t border-zinc-900 text-sm font-semibold mb-6">
-              <span className="text-zinc-300">Estimated Total:</span>
-              <span className="text-amber-300 text-base font-mono font-bold">R{wishlistTotal}</span>
+            <div className="flex items-center justify-between py-2.5 border-t border-stone-200 text-sm font-semibold mb-4">
+              <span className="text-stone-600">Estimated Total:</span>
+              <span className="text-stone-950 text-base font-mono font-bold">R{wishlistTotal}</span>
             </div>
 
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => {
-                  setShowWishlistDrawer(false);
-                  onOpenBooking();
-                }}
-                className="flex-1 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-600 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 transition-all flex items-center justify-center gap-2"
-              >
-                <Phone className="w-4 h-4 fill-black" />
-                <span>Call Desk With This Order</span>
-              </button>
-            </div>
+            <button
+              onClick={() => {
+                setShowWishlistDrawer(false);
+                onOpenBooking();
+              }}
+              className="w-full py-2.5 rounded-lg bg-black text-white font-semibold text-xs uppercase tracking-wider hover:bg-stone-800 transition-colors flex items-center justify-center gap-2"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              <span>Call Desk With This Order</span>
+            </button>
           </div>
         </div>
       )}
