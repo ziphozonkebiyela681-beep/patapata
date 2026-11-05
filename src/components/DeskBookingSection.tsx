@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Phone, Clock, Users, Music, Check, Copy, MessageCircle, AlertCircle, Flame } from 'lucide-react';
 import { VintageStampBadge, VinylRecordBadge } from './VintageAccents';
+import { VintagePhotoFrame } from './VintagePhotoFrame';
 
 export function DeskBookingSection() {
   const [copied, setCopied] = useState(false);
@@ -39,24 +40,16 @@ export function DeskBookingSection() {
         {/* Frontline Desk Call Box */}
         <div className="max-w-4xl mx-auto border border-stone-200 rounded-2xl p-6 sm:p-10 bg-stone-50 shadow-sm relative overflow-hidden">
           
-          {/* Authentic Wood-Fired Hearth Fireplace Photo Showcase */}
-          <div className="mb-8 rounded-xl overflow-hidden border border-stone-200 bg-stone-100 shadow-2xs">
-            <div className="aspect-[16/9] sm:aspect-[21/9] w-full relative">
-              <img
-                src={hearthOvenBgUrl}
-                alt="Pata Pata wood-fired hearth oven glowing with fire"
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs">
-                <span className="font-semibold flex items-center gap-1.5">
-                  <Flame className="w-3.5 h-3.5 text-stone-200" />
-                  Wood-Fired Hearth Oven at 286 Fox Street
-                </span>
-                <span className="hidden sm:inline text-stone-300">Traditional hearth cooking</span>
-              </div>
-            </div>
+          {/* Authentic Wood-Fired Hearth Fireplace in Antique Gold Baroque Frame */}
+          <div className="mb-8">
+            <VintagePhotoFrame
+              src={hearthOvenBgUrl}
+              alt="Pata Pata wood-fired hearth oven glowing with fire"
+              aspectRatio="aspect-[16/9] sm:aspect-[21/9]"
+              plateText="286 FOX STREET • WOOD-FIRED HEARTH OVEN"
+              caption="Traditional hearth cooking & slow fires"
+              frameSize="md"
+            />
           </div>
 
           {/* Central Call Card */}

@@ -1,106 +1,101 @@
 import React from 'react';
 
-interface VintagePhotoFrameProps {
-  src: string;
-  alt: string;
+export interface VintagePhotoFrameProps {
+  src?: string;
+  alt?: string;
   className?: string;
   imageClassName?: string;
-  aspectRatio?: string; // e.g., 'aspect-4/3', 'aspect-square', 'aspect-16/10'
+  aspectRatio?: string; // e.g., 'aspect-[16/9]', 'aspect-[4/3]', 'aspect-[3/4]', 'aspect-[4/5]'
   plateText?: string;
   caption?: string;
   priority?: boolean;
-  showCorners?: boolean;
+  frameSize?: 'sm' | 'md' | 'lg';
+  showCorners?: boolean; // kept for backwards compatibility
+  children?: React.ReactNode;
 }
 
 /**
- * Authentic 1960s Archival Framed Photograph.
- * Features:
- * - Multi-layered vintage wood & charcoal exhibition molding
- * - Archival warm ivory passe-partout matting (`bg-[#faf7f2]`)
- * - Authentic 1960s metallic/charcoal photo mounting corner brackets in all four corners
- * - Fine inner framing hairline & vintage paper depth
- * - Optional engraved vintage brass/charcoal archive plate at the base
+ * Authentic Antique Gilded Baroque / Rococo Carved Gold Frame.
+ * Replicates the exact ornate gold carved exhibition frame provided by the user,
+ * dynamically adapting its shape and dimensions to any photograph's aspect ratio
+ * and screen size using calibrated 9-slice CSS border-image geometry.
  */
 export function VintagePhotoFrame({
   src,
-  alt,
+  alt = 'Photograph',
   className = '',
   imageClassName = 'object-cover',
-  aspectRatio = 'aspect-4/3',
+  aspectRatio = 'aspect-[4/3]',
   plateText,
   caption,
   priority = false,
-  showCorners = true,
+  frameSize = 'md',
+  children,
 }: VintagePhotoFrameProps) {
+  // Proportional border width tuned to original frame slice dimensions (254px top, 225px right, 221px bottom, 223px left)
+  const getBorderWidth = (size: 'sm' | 'md' | 'lg') => {
+    switch (size) {
+      case 'sm':
+        return 'clamp(18px, 2.8vw, 28px) clamp(16px, 2.5vw, 25px) clamp(16px, 2.5vw, 25px) clamp(16px, 2.5vw, 25px)';
+      case 'lg':
+        return 'clamp(28px, 5vw, 52px) clamp(24px, 4.3vw, 45px) clamp(24px, 4.3vw, 45px) clamp(24px, 4.3vw, 45px)';
+      case 'md':
+      default:
+        return 'clamp(22px, 3.8vw, 40px) clamp(20px, 3.4vw, 36px) clamp(20px, 3.4vw, 36px) clamp(20px, 3.4vw, 36px)';
+    }
+  };
+
+  const frameStyle: React.CSSProperties = {
+    borderStyle: 'solid',
+    borderColor: '#c99a4a', // Fallback rich antique gold
+    borderWidth: getBorderWidth(frameSize),
+    borderImageSource: "url('/assets/aistudio/ornate_gold_frame_cutout.png')",
+    borderImageSlice: '254 225 221 223',
+    borderImageRepeat: 'stretch',
+    filter: 'drop-shadow(0 14px 28px rgba(0,0,0,0.32)) drop-shadow(0 3px 8px rgba(0,0,0,0.22))',
+  };
+
   return (
-    <figure
-      className={`relative group bg-[#faf7f2] p-2.5 sm:p-3.5 rounded-sm border-[4px] sm:border-[6px] border-stone-900 shadow-[0_8px_20px_-4px_rgba(0,0,0,0.25)] ring-1 ring-stone-800/40 transition-transform duration-300 hover:shadow-[0_12px_28px_-6px_rgba(0,0,0,0.35)] ${className}`}
-    >
-      {/* Outer decorative molding line */}
-      <div className="absolute inset-1 border border-stone-300/80 pointer-events-none rounded-[1px]" />
+    <figure className={`relative group inline-block w-full text-left transition-transform duration-300 hover:scale-[1.01] ${className}`}>
+      
+      {/* Outer Carved Baroque Frame Container */}
+      <div 
+        style={frameStyle}
+        className="relative w-full transition-all duration-300 select-none"
+      >
+        {/* Inner Photograph Well (deep rebate with inner bevel shadow) */}
+        <div className={`relative w-full ${aspectRatio} overflow-hidden bg-stone-950 shadow-[inset_0_0_14px_rgba(0,0,0,0.7)] ring-1 ring-amber-950/50`}>
+          {src ? (
+            <img
+              src={src}
+              alt={alt}
+              loading={priority ? 'eager' : 'lazy'}
+              className={`w-full h-full ${imageClassName} transition-transform duration-500 group-hover:scale-[1.02]`}
+            />
+          ) : (
+            children
+          )}
 
-      {/* The Matting & Photo Container */}
-      <div className={`relative overflow-hidden ${aspectRatio} w-full bg-stone-900 border-2 border-stone-800 shadow-inner`}>
-        {/* The Photograph */}
-        <img
-          src={src}
-          alt={alt}
-          loading={priority ? 'eager' : 'lazy'}
-          className={`w-full h-full ${imageClassName} transition-transform duration-500 group-hover:scale-[1.02]`}
-        />
-
-        {/* Vintage vignette / warm photo paper tone layer */}
-        <div
-          className="absolute inset-0 pointer-events-none shadow-[inset_0_0_24px_rgba(0,0,0,0.3)] mix-blend-multiply opacity-40"
-          aria-hidden="true"
-        />
-
-        {/* 1960s Archival Photo Mounting Corner Brackets */}
-        {showCorners && (
-          <>
-            {/* Top-Left Corner Bracket */}
-            <div
-              className="absolute top-0 left-0 w-5 h-5 pointer-events-none border-t-[3px] border-l-[3px] border-stone-900 drop-shadow-[1px_1px_1px_rgba(255,255,255,0.6)]"
-              aria-hidden="true"
-            >
-              <div className="w-2.5 h-2.5 bg-stone-900/90 -rotate-45 -translate-x-1 -translate-y-1" />
-            </div>
-
-            {/* Top-Right Corner Bracket */}
-            <div
-              className="absolute top-0 right-0 w-5 h-5 pointer-events-none border-t-[3px] border-r-[3px] border-stone-900 drop-shadow-[-1px_1px_1px_rgba(255,255,255,0.6)]"
-              aria-hidden="true"
-            >
-              <div className="w-2.5 h-2.5 bg-stone-900/90 rotate-45 translate-x-1 -translate-y-1 ml-auto" />
-            </div>
-
-            {/* Bottom-Left Corner Bracket */}
-            <div
-              className="absolute bottom-0 left-0 w-5 h-5 pointer-events-none border-b-[3px] border-l-[3px] border-stone-900 drop-shadow-[1px_-1px_1px_rgba(255,255,255,0.6)]"
-              aria-hidden="true"
-            >
-              <div className="w-2.5 h-2.5 bg-stone-900/90 rotate-45 -translate-x-1 translate-y-1 mt-auto" />
-            </div>
-
-            {/* Bottom-Right Corner Bracket */}
-            <div
-              className="absolute bottom-0 right-0 w-5 h-5 pointer-events-none border-b-[3px] border-r-[3px] border-stone-900 drop-shadow-[-1px_-1px_1px_rgba(255,255,255,0.6)]"
-              aria-hidden="true"
-            >
-              <div className="w-2.5 h-2.5 bg-stone-900/90 -rotate-45 translate-x-1 translate-y-1 mt-auto ml-auto" />
-            </div>
-          </>
-        )}
+          {/* Antique photograph luster & subtle warm museum depth */}
+          <div
+            className="absolute inset-0 pointer-events-none shadow-[inset_0_0_24px_rgba(0,0,0,0.45)] mix-blend-multiply opacity-35"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-amber-950/15 via-transparent to-amber-200/10 mix-blend-overlay"
+            aria-hidden="true"
+          />
+        </div>
       </div>
 
-      {/* Engraved Vintage Brass / Archive Nameplate */}
+      {/* Engraved Antique Brass Museum Plaque */}
       {(plateText || caption) && (
-        <div className="mt-2.5 pt-2 border-t border-stone-300 flex items-center justify-between gap-2 px-1 text-stone-800">
+        <div className="mt-3 pt-1 flex flex-wrap items-center justify-between gap-2 px-1">
           {plateText && (
-            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-stone-100 border border-stone-400/80 shadow-2xs font-typewriter text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-stone-900">
-              <span className="w-1 h-1 rounded-full bg-stone-800" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xs bg-gradient-to-b from-[#e1bf72] via-[#c6953d] to-[#996a22] border border-[#785012] text-stone-950 font-typewriter text-[9px] sm:text-[10px] uppercase font-bold tracking-widest shadow-[0_2px_4px_rgba(0,0,0,0.22)] select-none">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#52360b] shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)] border border-amber-300/40" />
               <span>{plateText}</span>
-              <span className="w-1 h-1 rounded-full bg-stone-800" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#52360b] shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)] border border-amber-300/40" />
             </div>
           )}
           {caption && (

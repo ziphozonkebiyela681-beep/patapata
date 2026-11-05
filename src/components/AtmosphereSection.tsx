@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Phone, ChevronLeft, ChevronRight, Pause, Play, Sparkles } from 'lucide-react';
 import { InstagramIcon, TikTokIcon, SOCIAL_LINKS } from './SocialIcons';
-import { DancingCoupleSilhouette, SaxophoneSilhouette } from './JazzSketches';
+import { DancingCoupleSilhouette, MiriamMakebaSilhouette } from './JazzSketches';
 import { VintageStampBadge } from './VintageAccents';
 import { AfricanContinentSVG, AfricanGeometricDivider } from './AfricanMotifs';
 
@@ -89,38 +89,38 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
   ];
 
   return (
-    <section id="atmosphere" className="py-16 sm:py-20 bg-white text-stone-900 border-t border-stone-200">
+    <section id="atmosphere" className="py-16 sm:py-20 bg-[#1c1b19] text-stone-100 border-t border-stone-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8">
           <div className="flex items-center justify-center gap-2 mb-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-stone-500 block">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-400 block">
               286 Fox Street · Atmosphere
             </span>
             <VintageStampBadge text="AUTHENTIC 1960s SHEBEEN VIBE" />
           </div>
           <div className="flex items-center justify-center gap-3">
-            <h2 className="text-3xl sm:text-4xl font-black font-display text-stone-950 mb-3">
+            <h2 className="text-3xl sm:text-4xl font-black font-display text-white mb-3">
               Inside Pata Pata
             </h2>
-            <DancingCoupleSilhouette className="w-8 h-8 text-stone-900 opacity-60 hidden sm:block" />
+            <DancingCoupleSilhouette className="w-8 h-8 opacity-75 hidden sm:block" />
           </div>
-          <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-serif italic">
+          <p className="text-stone-300 text-sm sm:text-base leading-relaxed font-serif italic">
             Dimmed woven pendant lamps, handwritten chalk lyrics across ceiling beams, glowing candles on weathered wooden tables, and laughter filling the room.
           </p>
         </div>
 
         {/* Chalkboard Lyrics Inscription Banner */}
-        <div className="w-full bg-stone-900 text-stone-100 py-3 px-4 mb-8 rounded-xl overflow-hidden shadow-2xs">
+        <div className="w-full bg-[#141312] border border-stone-800 text-stone-200 py-3 px-4 mb-8 rounded-xl overflow-hidden shadow-md">
           <div className="flex items-center justify-between text-xs tracking-wider font-mono italic whitespace-nowrap overflow-x-auto scrollbar-none gap-6">
-            <span className="text-stone-300 font-sans font-bold uppercase text-[10px] tracking-widest bg-stone-800 px-2 py-0.5 rounded shrink-0 not-italic">
+            <span className="text-amber-400 font-sans font-bold uppercase text-[10px] tracking-widest bg-stone-900 border border-stone-700 px-2 py-0.5 rounded shrink-0 not-italic">
               Ceiling Inscription
             </span>
             <span>&ldquo;aHiyo mama aHiyo mama, nants&apos; iPata Pata&rdquo;</span>
-            <span className="text-stone-500">·</span>
+            <span className="text-stone-600">·</span>
             <span>&ldquo;Saguquka sathi bheka, nants&apos; iPata Pata&rdquo;</span>
-            <span className="text-stone-500">·</span>
+            <span className="text-stone-600">·</span>
             <span>&ldquo;do down Johannesburg way. And everybody starts to move as soon as &apos;Pata Pata&apos; starts to play&rdquo;</span>
           </div>
         </div>
@@ -128,15 +128,15 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
         {/* View Switcher Controls */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-stone-600">Switch Photo:</span>
-            <div className="inline-flex rounded-lg p-0.5 bg-stone-100 border border-stone-200">
+            <span className="text-xs font-semibold text-stone-400">Switch Photo:</span>
+            <div className="inline-flex rounded-lg p-0.5 bg-[#242220] border border-stone-700">
               <button
                 type="button"
                 onClick={() => setCurrentIndex(0)}
                 className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
                   currentIndex === 0
-                    ? 'bg-black text-white shadow-2xs'
-                    : 'text-stone-600 hover:text-stone-950'
+                    ? 'bg-stone-100 text-stone-950 font-bold shadow-sm'
+                    : 'text-stone-300 hover:text-white'
                 }`}
               >
                 1. Candlelit Dining
@@ -146,23 +146,23 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
                 onClick={() => setCurrentIndex(1)}
                 className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
                   currentIndex === 1
-                    ? 'bg-black text-white shadow-2xs'
-                    : 'text-stone-600 hover:text-stone-950'
+                    ? 'bg-stone-100 text-stone-950 font-bold shadow-sm'
+                    : 'text-stone-300 hover:text-white'
                 }`}
               >
-                2. Grand Hall & Bar
+                2. Grand Hall &amp; Bar
               </button>
             </div>
           </div>
 
           {/* Social Links */}
           <div className="flex items-center gap-2">
-            <span className="text-xs text-stone-500 hidden sm:inline">Follow us:</span>
+            <span className="text-xs text-stone-400 hidden sm:inline">Follow us:</span>
             <a
               href={SOCIAL_LINKS.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-stone-50 hover:bg-stone-100 border border-stone-200 text-stone-800 text-xs font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#242220] hover:bg-stone-800 border border-stone-700 text-stone-200 text-xs font-medium transition-colors"
             >
               <InstagramIcon className="w-3.5 h-3.5" />
               <span>{SOCIAL_LINKS.handle}</span>
@@ -171,7 +171,7 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
               href={SOCIAL_LINKS.tiktok}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-stone-50 hover:bg-stone-100 border border-stone-200 text-stone-800 text-xs font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#242220] hover:bg-stone-800 border border-stone-700 text-stone-200 text-xs font-medium transition-colors"
             >
               <TikTokIcon className="w-3.5 h-3.5" />
               <span>TikTok</span>
@@ -184,17 +184,27 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
           <AfricanGeometricDivider />
         </div>
 
-        {/* Featured Photo in Authentic 1960s Archival Exhibition Frame */}
+        {/* Featured Photo in Authentic Gilded Baroque Carved Gold Frame */}
         <div 
-          className="relative group bg-[#faf7f2] p-2.5 sm:p-4 rounded-sm border-[4px] sm:border-[6px] border-stone-900 shadow-[0_8px_20px_-4px_rgba(0,0,0,0.25)] ring-1 ring-stone-800/40 mb-10"
+          className="relative group w-full mb-10 transition-transform duration-300 select-none"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Outer decorative molding line */}
-          <div className="absolute inset-1 border border-stone-300/80 pointer-events-none rounded-[1px]" />
-
-          {/* Aspect Ratio Container */}
-          <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9] w-full overflow-hidden bg-stone-900 border-2 border-stone-800 shadow-inner">
+          {/* Ornate Gold Carved Frame */}
+          <div
+            style={{
+              borderStyle: 'solid',
+              borderColor: '#c99a4a',
+              borderWidth: 'clamp(28px, 5vw, 52px) clamp(24px, 4.3vw, 45px) clamp(24px, 4.3vw, 45px) clamp(24px, 4.3vw, 45px)',
+              borderImageSource: "url('/assets/aistudio/ornate_gold_frame_cutout.png')",
+              borderImageSlice: '254 225 221 223',
+              borderImageRepeat: 'stretch',
+              filter: 'drop-shadow(0 16px 32px rgba(0,0,0,0.35)) drop-shadow(0 4px 10px rgba(0,0,0,0.22))',
+            }}
+            className="relative w-full"
+          >
+            {/* Aspect Ratio Container */}
+            <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9] w-full overflow-hidden bg-stone-950 shadow-[inset_0_0_14px_rgba(0,0,0,0.7)] ring-1 ring-amber-950/50">
             
             {/* Photo 1 */}
             <div 
@@ -311,28 +321,15 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
               ))}
             </div>
 
-            {/* 1960s Archival Photo Mounting Corner Brackets */}
-            <div className="absolute top-0 left-0 w-6 h-6 pointer-events-none border-t-[3px] border-l-[3px] border-stone-900 z-20">
-              <div className="w-3 h-3 bg-stone-900 -rotate-45 -translate-x-1.5 -translate-y-1.5" />
             </div>
-            <div className="absolute top-0 right-0 w-6 h-6 pointer-events-none border-t-[3px] border-r-[3px] border-stone-900 z-20">
-              <div className="w-3 h-3 bg-stone-900 rotate-45 translate-x-1.5 -translate-y-1.5 ml-auto" />
-            </div>
-            <div className="absolute bottom-0 left-0 w-6 h-6 pointer-events-none border-b-[3px] border-l-[3px] border-stone-900 z-20">
-              <div className="w-3 h-3 bg-stone-900 rotate-45 -translate-x-1.5 translate-y-1.5 mt-auto" />
-            </div>
-            <div className="absolute bottom-0 right-0 w-6 h-6 pointer-events-none border-b-[3px] border-r-[3px] border-stone-900 z-20">
-              <div className="w-3 h-3 bg-stone-900 -rotate-45 translate-x-1.5 translate-y-1.5 mt-auto ml-auto" />
-            </div>
-
           </div>
 
-          {/* Engraved Archival Nameplate */}
-          <div className="mt-2.5 pt-2 border-t border-stone-300 flex flex-col sm:flex-row items-center justify-between gap-2 px-1 text-stone-800">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm bg-stone-100 border border-stone-400/80 shadow-2xs font-typewriter text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-stone-900">
-              <span className="w-1 h-1 rounded-full bg-stone-800" />
+          {/* Engraved Antique Brass Museum Plaque */}
+          <div className="mt-3 pt-1 flex flex-col sm:flex-row items-center justify-between gap-2 px-1 text-stone-800">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xs bg-gradient-to-b from-[#e1bf72] via-[#c6953d] to-[#996a22] border border-[#785012] text-stone-950 font-typewriter text-[9px] sm:text-[10px] uppercase font-bold tracking-widest shadow-[0_2px_4px_rgba(0,0,0,0.22)] select-none">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#52360b] shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)] border border-amber-300/40" />
               <span>FOX STREET LIVING ROOM • 286 FOX ST • 1960s ARCHIVE</span>
-              <span className="w-1 h-1 rounded-full bg-stone-800" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#52360b] shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)] border border-amber-300/40" />
             </div>
             <p className="font-serif italic text-xs text-stone-600">
               {currentPhoto.subcaption}
@@ -345,22 +342,22 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
           {interiorDetails.map((h, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-xl bg-stone-50 border border-stone-200 flex flex-col justify-between shadow-2xs"
+              className="p-5 rounded-xl bg-[#242220] border border-stone-800 flex flex-col justify-between shadow-md"
             >
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5 block">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-1.5 block">
                   {h.tag}
                 </span>
-                <h4 className="text-base font-bold text-stone-950 mb-2">
+                <h4 className="text-base font-bold text-white mb-2">
                   {h.title}
                 </h4>
-                <p className="text-xs text-stone-600 leading-relaxed">
+                <p className="text-xs text-stone-300 leading-relaxed">
                   {h.description}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-stone-200 flex items-center gap-1.5 text-xs text-stone-500">
-                <Sparkles className="w-3.5 h-3.5 text-stone-700" />
+              <div className="mt-4 pt-3 border-t border-stone-800 flex items-center gap-1.5 text-xs text-stone-400">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                 <span>Atmosphere detail</span>
               </div>
             </div>
@@ -368,26 +365,26 @@ export function AtmosphereSection({ onOpenBooking }: AtmosphereSectionProps) {
         </div>
 
         {/* Desk Call Banner */}
-        <div className="p-6 sm:p-8 rounded-xl bg-stone-50 border border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-6 sm:p-8 rounded-xl bg-[#242220] border border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3.5 text-left">
-            <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center shrink-0">
-              <Phone className="w-4 h-4" />
+            <div className="w-10 h-10 rounded-lg bg-stone-100 text-stone-950 flex items-center justify-center shrink-0">
+              <Phone className="w-4 h-4 fill-stone-950" />
             </div>
             <div>
-              <h4 className="text-base font-bold text-stone-950">
+              <h4 className="text-base font-bold text-white">
                 Reserve your favorite corner at Pata Pata
               </h4>
-              <p className="text-xs text-stone-600">
-                Call our front desk host directly at <strong className="text-stone-950">+27 11 334 0470</strong> to reserve your table.
+              <p className="text-xs text-stone-300">
+                Call our front desk host directly at <strong className="text-white">+27 11 334 0470</strong> to reserve your table.
               </p>
             </div>
           </div>
 
           <button
             onClick={onOpenBooking}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-black text-white font-semibold text-xs uppercase tracking-wider hover:bg-stone-800 transition-colors shrink-0 shadow-sm"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-stone-100 text-stone-950 font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors shrink-0 shadow-sm"
           >
-            <Phone className="w-3.5 h-3.5" />
+            <Phone className="w-3.5 h-3.5 fill-stone-950" />
             <span>Call Desk To Book</span>
           </button>
         </div>

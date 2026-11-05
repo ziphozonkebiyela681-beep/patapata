@@ -22,28 +22,28 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-stone-200 transition-colors">
+    <header className="sticky top-0 z-40 w-full bg-[#1c1b19]/95 backdrop-blur-md border-b border-stone-800 transition-colors">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-6 px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
         
-        {/* Zone 1: User Logo (Black text on clean white background) */}
+        {/* Zone 1: User Logo (White text on clean charcoal background) */}
         <Link 
           to="/" 
-          className="flex items-center gap-2.5 shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 rounded-lg py-1"
+          className="flex items-center gap-2.5 shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 rounded-lg py-1"
           aria-label="Pata Pata Home"
         >
           <img
-            src="/assets/aistudio/WhatsApp_Image_2026-11-04_at_3.44.31_AM_78ac61fd.jpg"
+            src="/assets/aistudio/patapata_logo_white_isolated.png"
             alt="PATAPATA - SA Cuisine • Bar • Live Music"
             className="h-9 sm:h-12 w-auto object-contain"
             loading="eager"
           />
-          <span className="hidden lg:inline-flex items-center gap-1.5 px-2 py-0.5 border border-dashed border-stone-300 rounded text-[9px] font-typewriter uppercase tracking-widest text-stone-600 bg-stone-50">
-            <AfricanContinentSVG className="w-3.5 h-3.5 text-stone-900" showJoburgStar={true} />
+          <span className="hidden lg:inline-flex items-center gap-1.5 px-2 py-0.5 border border-dashed border-stone-700 rounded text-[9px] font-typewriter uppercase tracking-widest text-stone-300 bg-stone-900/80">
+            <AfricanContinentSVG className="w-4 h-5" />
             <span>EST. 1967 · KOFIFI SOUL</span>
           </span>
         </Link>
 
-        {/* Zone 2: Clean single-line text links with simple black active underlines */}
+        {/* Zone 2: Clean single-line text links with subtle amber active underlines */}
         <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.to;
@@ -53,13 +53,13 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
                 to={link.to}
                 className={`whitespace-nowrap transition-colors py-1 relative ${
                   isActive 
-                    ? 'text-black font-bold' 
-                    : 'text-stone-600 hover:text-black'
+                    ? 'text-white font-bold' 
+                    : 'text-stone-300 hover:text-white'
                 }`}
               >
                 {link.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-black rounded-full" />
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-400 rounded-full" />
                 )}
               </NavLink>
             );
@@ -69,12 +69,12 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
         {/* Zone 3: Social Links & Primary Desk Booking CTA */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Social links (Instagram & TikTok) */}
-          <div className="hidden xl:flex items-center gap-1 border-r border-stone-200 pr-3 mr-1">
+          <div className="hidden xl:flex items-center gap-1 border-r border-stone-800 pr-3 mr-1">
             <a
               href={SOCIAL_LINKS.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg text-stone-500 hover:text-black hover:bg-stone-100 transition-colors"
+              className="p-2 rounded-lg text-stone-400 hover:text-white hover:bg-stone-800 transition-colors"
               title="Instagram @pata.pata_maboneng"
               aria-label="Instagram @pata.pata_maboneng"
             >
@@ -84,7 +84,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
               href={SOCIAL_LINKS.tiktok}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg text-stone-500 hover:text-black hover:bg-stone-100 transition-colors"
+              className="p-2 rounded-lg text-stone-400 hover:text-white hover:bg-stone-800 transition-colors"
               title="TikTok @pata.pata_maboneng"
               aria-label="TikTok @pata.pata_maboneng"
             >
@@ -94,9 +94,9 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
 
           <button
             onClick={onOpenBooking}
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-lg bg-stone-900 text-white font-semibold text-xs uppercase tracking-wider hover:bg-black active:scale-95 transition-all shadow-sm whitespace-nowrap"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-lg bg-stone-100 text-stone-950 font-bold text-xs uppercase tracking-wider hover:bg-white active:scale-95 transition-all shadow-sm whitespace-nowrap"
           >
-            <Phone className="w-3.5 h-3.5 fill-white" />
+            <Phone className="w-3.5 h-3.5 fill-stone-950" />
             <span className="hidden sm:inline">Call Desk to Book</span>
             <span className="sm:hidden">Call Desk</span>
           </button>
@@ -105,7 +105,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-stone-100 border border-stone-300 text-stone-800 hover:text-black hover:bg-stone-200"
+            className="md:hidden p-2 rounded-lg bg-stone-800 border border-stone-700 text-stone-200 hover:text-white hover:bg-stone-700"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -116,15 +116,15 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-stone-200 bg-white px-5 py-5 space-y-3 shadow-lg">
+        <div className="md:hidden border-b border-stone-800 bg-[#1c1b19] px-5 py-5 space-y-3 shadow-2xl">
           <nav className="flex flex-col gap-1 text-sm font-medium">
             <Link
               to="/"
               onClick={() => setMobileMenuOpen(false)}
               className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
                 location.pathname === '/' 
-                  ? 'bg-stone-100 text-black font-bold' 
-                  : 'text-stone-700 hover:text-black hover:bg-stone-50'
+                  ? 'bg-stone-800 text-white font-bold' 
+                  : 'text-stone-300 hover:text-white hover:bg-stone-850'
               }`}
             >
               <span>Home Overview</span>
@@ -135,11 +135,11 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
               onClick={() => setMobileMenuOpen(false)}
               className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
                 location.pathname === '/menu' 
-                  ? 'bg-stone-100 text-black font-bold' 
-                  : 'text-stone-700 hover:text-black hover:bg-stone-50'
+                  ? 'bg-stone-800 text-white font-bold' 
+                  : 'text-stone-300 hover:text-white hover:bg-stone-850'
               }`}
             >
-              <Utensils className="w-4 h-4 text-stone-500" />
+              <Utensils className="w-4 h-4 text-stone-400" />
               <span>Online Menu & Specials</span>
             </Link>
 
@@ -148,11 +148,11 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
               onClick={() => setMobileMenuOpen(false)}
               className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
                 location.pathname === '/story' 
-                  ? 'bg-stone-100 text-black font-bold' 
-                  : 'text-stone-700 hover:text-black hover:bg-stone-50'
+                  ? 'bg-stone-800 text-white font-bold' 
+                  : 'text-stone-300 hover:text-white hover:bg-stone-850'
               }`}
             >
-              <BookOpen className="w-4 h-4 text-stone-500" />
+              <BookOpen className="w-4 h-4 text-stone-400" />
               <span>Our Story & Miriam Makeba</span>
             </Link>
 
@@ -161,11 +161,11 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
               onClick={() => setMobileMenuOpen(false)}
               className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
                 location.pathname === '/atmosphere' 
-                  ? 'bg-stone-100 text-black font-bold' 
-                  : 'text-stone-700 hover:text-black hover:bg-stone-50'
+                  ? 'bg-stone-800 text-white font-bold' 
+                  : 'text-stone-300 hover:text-white hover:bg-stone-850'
               }`}
             >
-              <Compass className="w-4 h-4 text-stone-500" />
+              <Compass className="w-4 h-4 text-stone-400" />
               <span>Inside Atmosphere & Photos</span>
             </Link>
 
@@ -174,11 +174,11 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
               onClick={() => setMobileMenuOpen(false)}
               className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
                 location.pathname === '/jazz' 
-                  ? 'bg-stone-100 text-black font-bold' 
-                  : 'text-stone-700 hover:text-black hover:bg-stone-50'
+                  ? 'bg-stone-800 text-white font-bold' 
+                  : 'text-stone-300 hover:text-white hover:bg-stone-850'
               }`}
             >
-              <Music className="w-4 h-4 text-stone-500" />
+              <Music className="w-4 h-4 text-stone-400" />
               <span>Weekend Live Jazz Bandstand</span>
             </Link>
 
@@ -187,33 +187,33 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
               onClick={() => setMobileMenuOpen(false)}
               className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${
                 location.pathname === '/location' 
-                  ? 'bg-stone-100 text-black font-bold' 
-                  : 'text-stone-700 hover:text-black hover:bg-stone-50'
+                  ? 'bg-stone-800 text-white font-bold' 
+                  : 'text-stone-300 hover:text-white hover:bg-stone-850'
               }`}
             >
-              <MapPin className="w-4 h-4 text-stone-500" />
+              <MapPin className="w-4 h-4 text-stone-400" />
               <span>286 Fox Street Location & Hours</span>
             </Link>
           </nav>
 
-          <div className="pt-3 border-t border-stone-200 flex flex-col gap-2.5">
+          <div className="pt-3 border-t border-stone-800 flex flex-col gap-2.5">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenBooking();
               }}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-stone-900 text-white font-semibold text-xs uppercase tracking-wider"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-stone-100 text-stone-950 font-bold text-xs uppercase tracking-wider hover:bg-white"
             >
-              <Phone className="w-4 h-4 fill-white" />
+              <Phone className="w-4 h-4 fill-stone-950" />
               <span>Call Front Desk (+27 11 334 0470)</span>
             </button>
 
-            <div className="flex items-center justify-center gap-3 pt-1 text-xs text-stone-600">
+            <div className="flex items-center justify-center gap-3 pt-1 text-xs text-stone-400">
               <a
                 href={SOCIAL_LINKS.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-black underline"
+                className="hover:text-white underline"
               >
                 Instagram {SOCIAL_LINKS.handle}
               </a>
@@ -222,7 +222,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
                 href={SOCIAL_LINKS.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-black underline"
+                className="hover:text-white underline"
               >
                 TikTok
               </a>

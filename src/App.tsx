@@ -30,7 +30,7 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       
-      <div className="min-h-screen bg-white text-stone-900 selection:bg-stone-900 selection:text-white font-sans relative flex flex-col">
+      <div className="min-h-screen bg-[#1c1b19] text-stone-100 selection:bg-amber-600 selection:text-white font-sans relative flex flex-col">
         {/* Navigation Top Bar */}
         <Navbar onOpenBooking={handleOpenBooking} />
 
@@ -57,17 +57,17 @@ export default function App() {
           onClose={handleCloseBooking}
         />
 
-        {/* Mobile-Only Ergonomic Bottom Tab Bar (Clean white background, black text, min 44px hitboxes) */}
+        {/* Mobile-Only Ergonomic Bottom Tab Bar (Charcoal background, off-white text, min 44px hitboxes) */}
         <nav 
           aria-label="Mobile Bottom Navigation" 
-          className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-t border-stone-200 px-2 py-1 shadow-md pb-safe"
+          className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#1c1b19]/95 backdrop-blur-xl border-t border-stone-800 px-2 py-1 shadow-lg pb-safe"
         >
           <div className="grid grid-cols-5 items-center h-14">
             <NavLink
               to="/"
               className={({ isActive }) =>
                 `flex flex-col items-center justify-center min-h-[44px] rounded-lg transition-colors ${
-                  isActive ? 'text-black font-bold' : 'text-stone-500 hover:text-black'
+                  isActive ? 'text-amber-400 font-bold' : 'text-stone-400 hover:text-stone-200'
                 }`
               }
             >
@@ -79,7 +79,7 @@ export default function App() {
               to="/menu"
               className={({ isActive }) =>
                 `flex flex-col items-center justify-center min-h-[44px] rounded-lg transition-colors ${
-                  isActive ? 'text-black font-bold' : 'text-stone-500 hover:text-black'
+                  isActive ? 'text-amber-400 font-bold' : 'text-stone-400 hover:text-stone-200'
                 }`
               }
             >
@@ -91,7 +91,7 @@ export default function App() {
               to="/jazz"
               className={({ isActive }) =>
                 `flex flex-col items-center justify-center min-h-[44px] rounded-lg transition-colors ${
-                  isActive ? 'text-black font-bold' : 'text-stone-500 hover:text-black'
+                  isActive ? 'text-amber-400 font-bold' : 'text-stone-400 hover:text-stone-200'
                 }`
               }
             >
@@ -103,7 +103,7 @@ export default function App() {
               to="/atmosphere"
               className={({ isActive }) =>
                 `flex flex-col items-center justify-center min-h-[44px] rounded-lg transition-colors ${
-                  isActive ? 'text-black font-bold' : 'text-stone-500 hover:text-black'
+                  isActive ? 'text-amber-400 font-bold' : 'text-stone-400 hover:text-stone-200'
                 }`
               }
             >
@@ -114,13 +114,13 @@ export default function App() {
             <button
               type="button"
               onClick={handleOpenBooking}
-              className="flex flex-col items-center justify-center min-h-[44px] rounded-lg text-stone-700 hover:text-black transition-colors"
+              className="flex flex-col items-center justify-center min-h-[44px] rounded-lg text-stone-300 hover:text-white transition-colors"
               aria-label="Call Frontline Desk"
             >
-              <div className="w-6 h-6 rounded-full bg-stone-900 text-white flex items-center justify-center mb-0.5 shadow-sm">
-                <Phone className="w-3.5 h-3.5 fill-white" />
+              <div className="w-6 h-6 rounded-full bg-stone-100 text-stone-900 flex items-center justify-center mb-0.5 shadow-sm">
+                <Phone className="w-3.5 h-3.5 fill-stone-900" />
               </div>
-              <span className="text-[10px] font-bold tracking-tight text-stone-900">Call Desk</span>
+              <span className="text-[10px] font-bold tracking-tight text-stone-200">Call Desk</span>
             </button>
           </div>
         </nav>
